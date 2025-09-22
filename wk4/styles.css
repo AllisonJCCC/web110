@@ -1,0 +1,52 @@
+
+/*Allison Hanna 2/12/25  Ch.4 assignment css */
+
+/* Basic color and font settings */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #d7c7aa;
+  color: #926f4f;
+  font-size: 16px;
+}
+
+/*Element styles*/
+h1 {
+  background-color: #00602b; /* Green for Italian vibe */
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  background-color: #bb161d;
+}
+
+p {
+  color: #230e06;
+  background-color: #fff;
+}
+
+/* CSS for Multiple Styles */
+h2,h3 {
+  color: #342517;
+}
+
+/* Highlighting text with span */
+.highlight {
+  font-weight: bold;
+  color: #ee1e28;
+  font-style: italic;
+}
+
+/* Styling for the specials page */
+.special-item {
+  background: #fff;
+}
+
+
+
+
