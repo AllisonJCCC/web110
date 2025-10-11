@@ -1,0 +1,68 @@
+
+/**
+ * Print Stylesheet 
+
+*/
+
+@media print {
+
+#content, #page {
+width: 100%; 
+margin: 0; 
+float: none;
+}
+    
+    
+@page { margin:10px;}
+
+body {
+font: 13pt Georgia, "Times New Roman", Times, serif;
+background: #fff !important;
+color: #000;
+}
+
+h1 {
+font-size: 24px;
+}
+
+h2, h3, h4 {
+font-size: 14px;
+margin-top: 25px;
+}    
+ 
+
+a {
+    page-break-inside:avoid
+}
+blockquote {
+    page-break-inside: avoid;
+}
+h1, h2, h3, h4, h5, h6 { page-break-after:avoid; 
+     page-break-inside:avoid }
+img { display:none; }
+table, pre { page-break-inside:avoid }
+ul, ol, dl  { page-break-before:avoid }
+
+a:link, a:visited, a {
+background: transparent;
+color: #520;
+font-weight: bold;
+text-decoration: underline;
+text-align: left;
+}
+
+a {
+    page-break-inside:avoid
+}
+
+
+ul, ol {
+list-style: square; margin-left: 18pt;
+margin-bottom: 20pt;    
+}
+
+li {
+line-height: 1.6em;
+}    
+    
+}
