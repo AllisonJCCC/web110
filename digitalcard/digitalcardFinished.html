@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title> My business card</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> <!-- Go to google fonts and find a font you like. Replace your font where the name says "Roboto"-->
+     <style>
+           * {  /*  These are universal styles */
+                   box-sizing: border-box;
+            }
+            body {
+                height: 100vh; /*  This will fill the browser's height.  Remove the justify-content and align-items css to see the full height. */
+                display: flex; /* This will organize the information well */
+                justify-content: center; /* This will center the info L and R */
+                align-items: center; /* This will center the info Top and Bottom */
+                perspective: 1000px; /* https://www.w3schools.com/cssref/css3_pr_perspective.php   The lower the #, the more 3d effect.  It changes the child of body, not body itself. */
+                background-color: #111;
+                }
+
+            .container {
+                min-width: 700px; /* This controls the height*/
+                min-height: 350px;  /* This controls the width*/
+                position: relative; /* This controls the positon of the container in some browsers*/
+                transition: 1.5s ease-in-out; /* https://www.w3schools.com/css/css3_transitions.asp   This determines how long and what kind of transition */
+                transform-style: preserve-3d; /* https://www.w3schools.com/cssref/trycss3_transform-style_inuse.htm  This just preserves the 3D effect */
+            }
+
+            .side {
+                position: absolute;  /* This controls the position of the content container on the card*/
+                text-align: center; /* This centers the content on the card*/
+                width: 100%;           /* Fill the space of the container's width */
+                height: 100%;             /* Fill the space of the container's height */
+                padding: 20px 50px;       /* Gives padding to the box */
+                color: #fff;                 /* Text color */
+                transform-style: preserve-3d;     /* Keep the 3D effect */
+                backface-visibility: hidden;     /* Hide the back of the card   Demo:https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility */
+                border-radius: 20px;     /* Rounds the corners of the box */
+            }
+         
+            .content {
+                transform: translatez(70px) scale(0.8); /*https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateZ   Moves things closer or farther away from you.   The scale forces the content to fill up less space on the card. Just remove scale to see the text fill the whole card.  */
+                line-height: 2em;       /* Line spacing*/
+                font-family: "Roboto", sans-serif;  /* Replace the Roboto font with your Google font */
+                padding:4px;
+                border-style: solid;    /* Gradient border style   I would do a gradient OR a bottom border but NOT both*/  
+                border-width: 10px;   /* Gradient border width*/
+                border-image: linear-gradient(45deg, grey, blue, white) 1; /* Gradient for border*/
+                 }
+         
+            .content h1 {
+                position: relative;     /* Positions the header on the card*/
+                        }
+         
+           .content h1:after {  /* Positions an imaginary div for the border*/
+                content: "";              /* Creates a "space" for content to go in.  https://developer.mozilla.org/en-US/docs/Web/CSS/::after */
+                position: absolute;     /* Positions the border under the header*/
+                bottom: -20px;        /* Put the line under the words*/
+                height: 3px;         /* The thickness of the border*/
+                background-color: #3e3;
+                width: 70px;     /* The length of the border*/
+                left: 50%;       /* tries to center the border*/
+                transform: translateX(-50%);     /* Flips the border so it's centered.  Whew!!! that was a lot of work!*/
+            }
+         
+
+            .content p {
+                margin-top: 50px;/* Spacing from the header*/
+                line-height: 2.5em; /* Line spacing*/
+               
+            }
+  
+            .front {
+                background-size: 100vh; /* Shows more of the image so you fill the space*/
+                background-image: url(frontpicture.jpg);
+            }
+            .back {
+                background-color: #333;
+                transform: rotateY(180deg); /* This keeps the image on the back of the card.  Remove it to see the difference.*/
+                padding-top: 10px;
+                background-image: url(backpicture.jpg);
+    
+            }
+      
+            .back h2 {
+                margin-top: 10px;/* Moves the header to the top of the card*/
+                font-size:2rem;
+            }
+         
+            .backtext{     /* This formats the text on the back of the card*/
+                 font-size:2rem;
+                 padding:0px;
+               }
+         
+         /* Link sytles */
+         
+         a:link{     
+             color:lightblue;
+             font-family:"Roboto" sans-serif;  /*Change the Roboto font with your Google font */
+             font-size:1.5rem;
+             
+         }
+         a:visited{
+             color:grey;
+         }
+         a:hover{
+            color:white;
+             background-color:dodgerblue;
+         }
+         
+          /* Flip the card */    
+        .container:hover {
+            transform: rotateY(180deg); /* Flips the card*/
+        }
+      </style>
+
+ </head>
+        <body>
+
+            <div class="container"><!--This is the container that holds the business card -->
+                <div class="front side"><!--This is the container that holds the front of the business card -->
+                    <div class="content"><!--This is the container that holds the info on the front of the business card -->
+                        <h1>Allison Hanna</h1> <!--This is the header on the front of the business card -->
+                        <!--Change the name above to your name-->
+                        <p>I am web developer who specializes in creating web experiences, user experience, and helping people see the power and creativity you can create with HTML and CSS.  Throughout my career, I have worked with companies of all shapes and sizes that enriched my experience
+                        </p>
+                        <!-- Add a sentence about you above-->
+                    </div> <!--closing content div-->
+                </div><!--closing front side-->
+                <div class="back side"><!--This is the container that holds the back of the business card -->
+                    <div class="content"><!--This is the container that holds the info on the back of the business card -->
+                        <h2>Contact Me</h2> <!--This is the header on the back of the business card. Make this an H1 if you want the underline under the words -->
+                      
+                        <!-- Add your info below-->
+                        <h3 class="backtext">Allison Hanna <br> 913.555.1248</h3>
+                        <a href="mailto:studentemail@jccc.edu">Email me </a><br>
+
+                        <!-- Add a download link here if you want   <a href= "FakeResume.pdf" download="FakeResume.pdf">My resume</a>-->
+                        <br>
+                        <br>
+                   
+                      </div> <!--closing content div-->
+                </div><!--closing back side-->
+
+            </div><!--closing container-->
+    
+        </body>
+</html>
