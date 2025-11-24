@@ -15,7 +15,6 @@ body {
     background: #1111118d;
     font-family: "Roboto Condensed", sans-serif;
     margin: 0;
-    font-size:1.3em;
 }
 
 main {
@@ -32,28 +31,33 @@ main {
 /* ---------- Card Container ---------- */
 .card {
     display: grid;
-    width: 80vw;
+    width: 90vw;             /* responsive width for mobile */
     max-width: 700px;
-    aspect-ratio: 1.2 / 1; /* more square */
+    aspect-ratio: 1 / 1.5;   /* taller for portrait */
     transform-style: preserve-3d;
-    transition: transform 0.8s ease;
+    transition: transform 1.5s ease;
 }
 
-/* Hover flip for desktop
-Only do this is the device has a mouse and can hover */
+/* Desktop shape */
+@media (min-width: 600px) {
+    .card {
+        width: 80vw;
+        aspect-ratio: 1.2 / 1;
+    }
+}
 
-/* Desktop hover flip (unchanged) */
+/* ---------- Flip states ---------- */
+/* Hover flip for desktop */
 @media (hover: hover) and (pointer: fine) {
-  .card-wrapper:hover .card {
-      transform: rotateY(180deg);
-  }
+    .card-wrapper:hover .card {
+        transform: rotateY(180deg);
+    }
 }
 
-/* Flip when JS adds .flipped */
+/* JS controlled flip */
 .card-wrapper.flipped .card {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
-
 
 /* ---------- Card Faces ---------- */
 .card-face {
@@ -73,20 +77,15 @@ Only do this is the device has a mouse and can hover */
     transform: rotateY(180deg);
 }
 
-/* larger paragraph/contact text */
-.back p,
-.back .contact-info {
-    font-size: 2rem; 
-}
-
-/* ---------- Background Layer  ---------- */
+/* ---------- Background Layer (deep layer) ---------- */
 .bg-layer {
     position: absolute;
-    inset: 0; /* Keeps the images on both sides */
+    inset: 0;
     background-size: cover;
     background-position: center;
-    transform: translateZ(-20px) scale(1.25);
-    
+    transform: translateZ(-20px) scale(1.15);
+    filter: brightness(0.85);
+    transition: transform 0.8s ease, filter 0.8s ease;
 }
 
 /* Front and back images */
@@ -96,25 +95,25 @@ Only do this is the device has a mouse and can hover */
 
 .back .bg-layer {
     background-image: url("backpicture.jpg");
-  }
+}
 
 /* ---------- Text Content (front layer) ---------- */
 .content {
-   position: relative;
-    width: 80%;          /* or use max-width */
-    height: 60%;         /* fix height to keep consistent */
-    margin: 0 auto;      /* center horizontally */
-    padding: 1.5rem;
+    position: relative;
+    width: 90%;
+    height: 60%;
+    margin: 0 auto;
+    padding: 1rem;
     box-sizing: border-box;
     transform: translateZ(40px);
     transition: transform 1.5s ease-in-out;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #fff;
+
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertical center */
-  
+    justify-content: center;
 }
 
 /* Gradient border around text */
@@ -122,14 +121,13 @@ Only do this is the device has a mouse and can hover */
     content: "";
     position: absolute;
     inset: 0;
-    padding: 4px; /* thickness of the border */
+    padding: 4px;
     border-radius: 15px;
-    border-style: solid;    /* Gradient border style */  
-    border-width: 10px;   /* Gradient border width*/
-    border-image: linear-gradient(45deg, grey, blue, white) 1; /* Gradient for border*/
-
+    border-style: solid;
+    border-width: 10px;
+    border-image: linear-gradient(45deg, grey, blue, white) 1;
+    pointer-events: none;
 }
-
 
 /* Gradient headings */
 h1, h2 {
@@ -150,60 +148,71 @@ h1, h2 {
 .contact-info a:hover {
     text-decoration: underline;
 }
+
+
+/* ---------- Responsive font adjustments ---------- */
+@media (max-width: 500px) {
+    .back h2 {
+        font-size: 1.6rem;
+    }
+    .back p,
+    .back .contact-info {
+        font-size: 1rem;
+    }
+}
 </style>
 </head>
 
 <body>
-
 <main>
-<div class="card-wrapper">
+    <div class="card-wrapper">
+        <!-- Card -->
+        <section class="card">
 
-    <section class="card">
-
-        <!-- ===================== FRONT ===================== -->
-        <section class="card-face front">
-            <div class="bg-layer"></div>
-            <article class="content">
-                <header>
-                    <h1>Allison Hanna</h1>
-                </header>
-                <p>
-                    I am a web developer who specializes in creating engaging web experiences, 
-                    user-focused designs, and demonstrating the creativity of HTML and CSS.
-                    I’ve worked with companies of all sizes, enriching my experience.
-                </p>
-            </article>
-        </section>
-
-        <!-- ===================== BACK ===================== -->
-        <section class="card-face back">
-            <div class="bg-layer"></div>
-            <article class="content">
-                <header>
-                    <h2>Contact Me</h2>
-                </header>
-                <address class="contact-info">
+            <!-- ===================== FRONT ===================== -->
+            <section class="card-face front">
+                <div class="bg-layer"></div>
+                <article class="content">
+                    <header>
+                        <h1>Allison Hanna</h1>
+                    </header>
                     <p>
-                        Allison Hanna<br>
-                        913.555.1248
+                        I am a web developer who specializes in creating engaging web experiences, 
+                        user-focused designs, and demonstrating the creativity of HTML and CSS.
+                        I’ve worked with companies of all sizes, enriching my experience.
                     </p>
-                    <a href="mailto:studentemail@jccc.edu">Email me</a>
-                </address>
-            </article>
+                </article>
+            </section>
+
+            <!-- ===================== BACK ===================== -->
+            <section class="card-face back">
+                <div class="bg-layer"></div>
+                <article class="content">
+                    <header>
+                        <h2>Contact Me</h2>
+                    </header>
+                    <address class="contact-info">
+                        <p>
+                            Allison Hanna<br>
+                            913.555.1248
+                        </p>
+                        <a href="mailto:studentemail@jccc.edu">Email me</a>
+                    </address>
+                </article>
+            </section>
+
         </section>
-
-    </section>
-</div>
+    </div>
 </main>
-<script>
-  // Get all card wrappers
-  const cardWrappers = document.querySelectorAll('.card-wrapper');
 
-  cardWrappers.forEach(wrapper => {
-    wrapper.addEventListener('click', () => {
-      wrapper.classList.toggle('flipped');
+<!-- ---------- JS Flip Control ---------- -->
+<script>
+    const cardWrappers = document.querySelectorAll('.card-wrapper');
+    cardWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', () => {
+            wrapper.classList.toggle('flipped');
+        });
     });
-  });
 </script>
 
 </body>
