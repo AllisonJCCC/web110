@@ -42,19 +42,18 @@ main {
 /* Hover flip for desktop
 Only do this is the device has a mouse and can hover */
 
+/* Desktop hover flip (unchanged) */
 @media (hover: hover) and (pointer: fine) {
-.card-wrapper:hover .card {
-    transform: rotateY(180deg);
-}
+  .card-wrapper:hover .card {
+      transform: rotateY(180deg);
+  }
 }
 
-/* Tap flip for touch devices 
-Only do this if the device can't hover like a touch screen or phone*/
-@media (hover: none) and (pointer: coarse) {
-    .card-wrapper:has(:active) .card {
-        transform: rotateY(180deg);
-    }
+/* Flip when JS adds .flipped */
+.card-wrapper.flipped .card {
+  transform: rotateY(180deg);
 }
+
 
 /* ---------- Card Faces ---------- */
 .card-face {
@@ -196,6 +195,16 @@ h1, h2 {
     </section>
 </div>
 </main>
+<script>
+  // Get all card wrappers
+  const cardWrappers = document.querySelectorAll('.card-wrapper');
+
+  cardWrappers.forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+      wrapper.classList.toggle('flipped');
+    });
+  });
+</script>
 
 </body>
 </html>
