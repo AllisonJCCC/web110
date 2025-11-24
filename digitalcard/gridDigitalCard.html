@@ -38,21 +38,6 @@ main {
     transition: transform 1.5s ease;
 }
 
-/* Desktop shape */
-@media (min-width: 600px) {
-    .card {
-        width: 80vw;
-        aspect-ratio: 1.2 / 1;
-    }
-}
-
-/* ---------- Flip states ---------- */
-/* Hover flip for desktop */
-@media (hover: hover) and (pointer: fine) {
-    .card-wrapper:hover .card {
-        transform: rotateY(180deg);
-    }
-}
 
 /* JS controlled flip */
 .card-wrapper.flipped .card {
@@ -147,6 +132,23 @@ h1, h2 {
 
 .contact-info a:hover {
     text-decoration: underline;
+}
+
+/*----------------Media Queries ------------------*/
+/* Desktop shape */
+@media (min-width: 600px) {
+    .card {
+        width: 80vw;
+        aspect-ratio: 1.2 / 1;
+    }
+}
+
+/* ---------- Flip states ---------- */
+/* Hover flip for desktop */
+@media (hover: hover) and (pointer: fine) {
+    .card-wrapper:hover .card {
+        transform: rotateY(180deg);
+    }
 }
 
 
