@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern 3D Flip Card – Allison Hanna</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+<style>
+/* ---------- Page Layout ---------- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1111118d;
+    font-family: "Roboto Condensed", sans-serif;
+    margin: 0;
+    font-size:1.3em;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* ---------- Card Wrapper ---------- */
+.card-wrapper {
+    perspective: 1200px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* ---------- Card Container ---------- */
+.card {
+    display: grid;
+    width: 80vw;
+    max-width: 700px;
+    aspect-ratio: 1.2 / 1; /* more square */
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+/* Hover flip for desktop */
+.card-wrapper:hover .card {
+    transform: rotateY(180deg);
+}
+
+/* Tap flip for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .card-wrapper:active .card {
+        transform: rotateY(180deg);
+    }
+}
+
+/* ---------- Card Faces ---------- */
+.card-face {
+    grid-area: 1 / 1;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Back face rotated */
+.back {
+    transform: rotateY(180deg);
+}
+
+/* larger paragraph/contact text */
+.back p,
+.back .contact-info {
+    font-size: 2rem; 
+}
+
+/* ---------- Background Layer  ---------- */
+.bg-layer {
+    position: absolute;
+    inset: 0; /* Keeps the images on both sides */
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-20px) scale(1.25);
+    
+}
+
+/* Front and back images */
+.front .bg-layer {
+    background-image: url("frontpicture.jpg");
+}
+
+.back .bg-layer {
+    background-image: url("backpicture.jpg");
+  }
+
+/* ---------- Text Content (front layer) ---------- */
+.content {
+   position: relative;
+    width: 80%;          /* or use max-width */
+    height: 60%;         /* fix height to keep consistent */
+    margin: 0 auto;      /* center horizontally */
+    padding: 1.5rem;
+    box-sizing: border-box;
+    transform: translateZ(40px);
+    transition: transform 1.5s ease-in-out;
+    text-align: center;
+    line-height: 1.6;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center */
+  
+}
+
+/* Gradient border around text */
+.content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 4px; /* thickness of the border */
+    border-radius: 15px;
+    border-style: solid;    /* Gradient border style */  
+    border-width: 10px;   /* Gradient border width*/
+    border-image: linear-gradient(45deg, grey, blue, white) 1; /* Gradient for border*/
+
+}
+
+
+/* Gradient headings */
+h1, h2 {
+    margin-bottom: 1rem;
+}
+
+/* Contact info */
+.contact-info {
+    font-style: normal;
+    margin-top: 1.5rem;
+}
+
+.contact-info a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<main>
+<div class="card-wrapper">
+
+    <section class="card">
+
+        <!-- ===================== FRONT ===================== -->
+        <section class="card-face front">
+            <div class="bg-layer"></div>
+            <article class="content">
+                <header>
+                    <h1>Allison Hanna</h1>
+                </header>
+                <p>
+                    I am a web developer who specializes in creating engaging web experiences, 
+                    user-focused designs, and demonstrating the creativity of HTML and CSS.
+                    I’ve worked with companies of all sizes, enriching my experience.
+                </p>
+            </article>
+        </section>
+
+        <!-- ===================== BACK ===================== -->
+        <section class="card-face back">
+            <div class="bg-layer"></div>
+            <article class="content">
+                <header>
+                    <h2>Contact Me</h2>
+                </header>
+                <address class="contact-info">
+                    <p>
+                        Allison Hanna<br>
+                        913.555.1248
+                    </p>
+                    <a href="mailto:studentemail@jccc.edu">Email me</a>
+                </address>
+            </article>
+        </section>
+
+    </section>
+</div>
+</main>
+
+</body>
+</html>
