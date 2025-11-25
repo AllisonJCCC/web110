@@ -181,24 +181,24 @@ section.card-side {
 </article>
 
 <script>
-  const card = document.getElementById('flipCard');
+const card = document.getElementById('flipCard');
 
-  // Function name describes its purpose
-  function toggleCardFlipOnTap() {
-    if (window.innerWidth <= 768) { // only for mobile/tablet
-      card.classList.toggle('flipped');
-    }
+function toggleCardFlipOnTap() {
+  // Flip only on mobile/tablet
+  if (window.innerWidth <= 768) {
+    card.classList.toggle('flipped'); // toggles front/back
   }
+}
 
-  // Attach event listener
-  card.addEventListener('click', toggleCardFlipOnTap);
+card.addEventListener('click', toggleCardFlipOnTap);
 
-  // Reset flip on resize back to desktop
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) {
-      card.classList.remove('flipped');
-    }
-  });
+// Optional: remove flipped state if resized to desktop
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    card.classList.remove('flipped');
+  }
+});
+
 </script>
 
 </body>
