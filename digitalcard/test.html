@@ -28,6 +28,8 @@
     transition: transform 1.5s ease-in-out;
     pointer-events: auto;
     cursor: pointer;
+    /* ← ADD THESE TWO LINES → */
+  -webkit-tap-highlight-color: transparent;
   }
 
   /* Hover only on desktop AND only when NOT already flipped */
@@ -112,10 +114,14 @@
 </article>
 
 <script>
-  const card = document.getElementById('card');
-  card.addEventListener('click', (e) => {
-    if (e.target.closest('a')) return;
-    card.classList.toggle('flipped');
+  const card = document.querySelector('.flip-card');
+
+  card.addEventListener('click', function (event) {
+    // If the user tapped a link (or something inside a link), ignore it
+    if (event.target.closest('a')) return;
+
+    // "this" also works here and refers to the card
+    this.classList.toggle('flipped');
   });
 </script>
 
