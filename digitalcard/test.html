@@ -33,9 +33,11 @@ article.flip-card {
   transition: transform 1.5s ease-in-out;
 }
 
-/* Hover flip for desktop */
-article.flip-card:hover {
-  transform: rotateY(180deg);
+/* Hover flip only for desktop */
+@media (hover: hover) and (pointer: fine) {
+  article.flip-card:hover {
+    transform: rotateY(180deg);
+  }
 }
 
 /* Flip via JS toggle on mobile */
@@ -189,13 +191,8 @@ let isFlipped = false;
 
 function toggleCardFlipOnTap() {
   if (window.innerWidth <= 768) {
-    if (!isFlipped) {
-      card.classList.add('flipped'); // flip to back
-      isFlipped = true;
-    } else {
-      card.classList.remove('flipped'); // flip to front
-      isFlipped = false;
-    }
+    card.classList.toggle('flipped');
+    isFlipped = card.classList.contains('flipped');
   }
 }
 
