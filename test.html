@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Card – Flips Both Ways Perfectly</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    font-family: Arial, sans-serif;
+    perspective: 1200px;
+    pointer-events: none;           /* disable clicks outside */
+  }
+
+  article.flip-card {
+    width: 90vw;
+    max-width: 700px;
+    aspect-ratio: 2 / 1;
+    border-radius: 20px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease-in-out;
+    pointer-events: auto;
+    cursor: pointer;
+    /* ← ADD THESE TWO LINES → */
+  -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Hover only on desktop AND only when NOT already flipped */
+  @media (hover: hover) and (pointer: fine) {
+    article.flip-card:hover:not(.flipped) {
+      transform: rotateY(180deg);
+    }
+  }
+
+  /* Click/tap state – this one wins over hover! */
+  article.flip-card.flipped {
+    transform: rotateY(180deg) !important;   /* ← THIS IS THE FIX */
+  }
+
+  .card-side {
+    position: absolute;
+    inset: 0;
+    padding: 40px 50px;
+    color: #fff;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    background: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg) center/cover;
+  }
+
+  .back {
+    transform: rotateY(180deg);
+    background-color: rgba(0,0,0,0.45);
+    background-blend-mode: overlay;
+  }
+
+  .content {
+    transform: translateZ(70px) scale(0.85);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .content h2 {
+    margin-bottom: 20px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    border-bottom: 4px solid #39e639;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+
+  .back a {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 34px;
+    border: 2.5px solid #39e639;
+    border-radius: 50px;
+    color: #39e639;
+    background: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.35s ease;
+  }
+
+  .back a:hover { background:#39e639; color:#000; }
+</style>
+</head>
+<body>
+
+<article class="flip-card" id="card">
+
+  <section class="card-side front">
+    <div class="content">
+      <h2>Hakkam Abdullah</h2>
+      <p>I am a UI/UX designer and art director specializing in front-end web design, user experience, and visual identity creation.</p>
+    </div>
+  </section>
+
+  <section class="card-side back">
+    <div class="content">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach me anytime.</p>
+      <a href="mailto:someone@example.com">Email Me</a> 
+    </div>
+  </section>
+
+</article>
+
+<script>
+  const card = document.querySelector('.flip-card');
+
+  card.addEventListener('click', function (event) {
+    // If the user tapped a link (or something inside a link), ignore it
+    if (event.target.closest('a')) return;
+
+    // "this" also works here and refers to the card
+    this.classList.toggle('flipped');
+  });
+
+document.querySelector('.flip-card').addEventListener('click', function (event) {
+    // If the tap is on a link (or inside one), let the link work — do nothing here
+    if (event.target.closest('a')) return;
+
+    // Otherwise, flip the card
+    this.classList.toggle('flipped');
+  });
+
+</script>
+
+</body>
+</html>
