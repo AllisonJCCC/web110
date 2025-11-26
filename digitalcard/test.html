@@ -3,118 +3,128 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flip Card – Only Flips When Tapped Inside</title>
+<title>Semantic Parallax Flip Card (Beginner Version)</title>
+
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-  html, body {
-    height: 100%;
-    background: #111;
-    font-family: Arial, sans-serif;
-  }
+	body {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #111;
+		font-family: Arial, sans-serif;
+		perspective: 1000px;
+	}
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
-    /* This prevents clicks outside the card from doing anything */
-    pointer-events: none;
-  }
+	article.flip-card {
+		width: 700px;
+		height: 350px;
+		border-radius: 20px;
+		position: relative;
+		transform-style: preserve-3d;
+		transition: transform 1.5s ease-in-out;
+		pointer-events: auto;
+		cursor: pointer;
+	}
 
-  article.flip-card {
-    width: 90vw;
-    max-width: 700px;
-    aspect-ratio: 2 / 1;
-    border-radius: 20px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1.5s ease-in-out;
-    cursor: pointer;
-    /* Re-enable pointer events ONLY on the card */
-    pointer-events: auto;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
+	article.flip-card:hover {
+		transform: rotateY(180deg);
+	}
 
-  @media (hover: hover) and (pointer: fine) {
-    article.flip-card:hover:not(.flipped) {
-      transform: rotateY(180deg);
-    }
-  }
+/* Click/tap flip */
+	article.flip-card.flipped { transform: rotateY(180deg); }
 
-  article.flip-card.flipped { transform: rotateY(180deg); }
+	section.card-side {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		padding: 40px 50px;
+		color: #fff;
+		border-radius: 20px;
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
+		background-size: cover;
+		background-position: center;
+	}
 
-  figure.layers { position: absolute; inset: 0; overflow: hidden; border-radius: 20px; pointer-events: none; transform-style: preserve-3d; }
-  .layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
+	/* FRONT SIDE */
+	section.front {
+		background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
+	}
 
-  .front .layer-deep { background-image: url("https://picsum.photos/900/600?blur=3"); transform: translateZ(-80px) scale(1.12); }
-  .front .layer-mid  { background-image: url("https://picsum.photos/900/600");        transform: translateZ(-40px) scale(1.06); }
-  .front .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.5));   transform: translateZ(0); }
-  .back  .layer-deep { background-image: url("https://picsum.photos/900/600?blur=2"); transform: translateZ(-80px) scale(1.12); }
-  .back  .layer-mid  { background-image: url("https://picsum.photos/900/600?blur=1"); transform: translateZ(-40px) scale(1.06); }
-  .back  .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.6));   transform: translateZ(0); }
+	/* BACK SIDE */
+	section.back {
+		background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
+		background-color: rgba(0,0,0,0.4);
+		transform: rotateY(180deg);
+	}
 
-  section.card-side {
-    position: absolute; inset: 0; padding: 5% 6%; border-radius: 20px; color: #fff;
-    backface-visibility: hidden; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
-    width: 100%; height: 100%;
-  }
+	/* Shared content (parallax depth) */
+	.card-content {
+		transform: translateZ(70px) scale(0.85);
+		line-height: 1.6;
+		text-align: center;
+	}
 
-  .front { background: url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; }
-  .back  { transform: rotateY(180deg); background: rgba(0,0,0,0.6) url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; background-blend-mode: overlay; }
+	.card-content h2 {
+		margin-bottom: 20px;
+		border-bottom: 3px solid #39e639;
+		padding-bottom: 10px;
+		display: inline-block;
+	}
 
-  .card-content { transform: translateZ(70px); text-align: center; display: flex; flex-direction: column; gap: 1.5rem; max-width: 85%; }
-  .card-content h2 { margin:0; border-bottom: 3px solid #39e639; padding-bottom: 8px; font-size: clamp(1.8rem, 5vw, 2.8rem); display: inline-block; }
-  .card-content p  { margin:0; line-height: 1.6; font-size: clamp(1rem, 3vw, 1.3rem); }
+	/* Email link on the back */
+	.back a {
+		display: inline-block;
+		margin-top: 25px;
+		padding: 10px 20px;
+		border: 2px solid #39e639;
+		border-radius: 6px;
+		color: #39e639;
+		text-decoration: none;
+		font-size: 1.1rem;
+		transition: 0.3s ease;
+	}
 
-  .back a {
-    padding: 0.75rem 1.8rem; border: 2px solid #39e639; border-radius: 50px; color: #39e639;
-    background: transparent; text-decoration: none; font-weight: bold; font-size: 1.1rem;
-    transition: all 0.3s ease;
-  }
-  .back a:hover, .back a:focus { background: #39e639; color: #000; }
+	.back a:hover {
+		background: #39e639;
+		color: #000;
+	}
 </style>
 </head>
+
 <body>
 
-<article class="flip-card" id="flipCard">
-  <section class="card-side front">
-    <figure class="layers" aria-hidden="true">
-      <div class="layer layer-deep"></div>
-      <div class="layer layer-mid"></div>
-      <div class="layer layer-top"></div>
-    </figure>
-    <div class="card-content">
-      <h2>Hakkam Abdullah</h2>
-      <p>I am a UI/UX designer and art director specializing in front-end web design, user experience, and visual identity creation.</p>
-    </div>
-  </section>
+<article class="flip-card">
 
-  <section class="card-side back">
-    <figure class="layers" aria-hidden="true">
-      <div class="layer layer-deep"></div>
-      <div class="layer layer-mid"></div>
-      <div class="layer layer-top"></div>
-    </figure>
-    <div class="card-content">
-      <h2>Contact Me</h2>
-      <p>Feel free to reach me anytime.</p>
-      <a href="mailto:someone@example.com">Email Me</a>
-    </div>
-  </section>
+	<!-- FRONT -->
+	<section class="card-side front">
+		<div class="card-content">
+			<h2>Hakkam Abdullah</h2>
+			<p>
+				I am a UI/UX designer and art director specializing in front-end
+				web design, user experience, and visual identity creation.
+			</p>
+		</div>
+	</section>
+
+	<!-- BACK -->
+	<section class="card-side back">
+		<div class="card-content">
+			<h2>Contact Me</h2>
+			<p>Feel free to reach me anytime.</p>
+
+			<a href="mailto:someone@example.com">Email Me</a>
+		</div>
+	</section>
+
 </article>
-
-<script>
-  const card = document.getElementById('flipCard');
-
-  card.addEventListener('click', (clickEvent) => {
-    // Only flip if clicking inside the card (not outside)
-    if (clickEvent.target.closest('a')) return;
-    card.classList.toggle('flipped');
-  });
-</script>
 
 </body>
 </html>
