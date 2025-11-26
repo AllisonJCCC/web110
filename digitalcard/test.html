@@ -3,28 +3,38 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flip Card – Full Parallax on Both Sides</title>
+<title>Flip Card – Only Flips When Tapped Inside</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
+  html, body {
+    height: 100%;
+    background: #111;
+    font-family: Arial, sans-serif;
+  }
+
   body {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #111;
-    font-family: Arial, sans-serif;
     perspective: 1200px;
+    /* This prevents clicks outside the card from doing anything */
+    pointer-events: none;
   }
 
   article.flip-card {
-    width: 90%; max-width: 700px;
+    width: 90vw;
+    max-width: 700px;
     aspect-ratio: 2 / 1;
     border-radius: 20px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1.5s ease-in-out;
     cursor: pointer;
+    /* Re-enable pointer events ONLY on the card */
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -35,32 +45,15 @@
 
   article.flip-card.flipped { transform: rotateY(180deg); }
 
-  /* PARALLAX LAYERS — NOW ON BOTH SIDES! */
-  figure.layers {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    border-radius: 20px;
-    pointer-events: none;
-    transform-style: preserve-3d;
-  }
+  figure.layers { position: absolute; inset: 0; overflow: hidden; border-radius: 20px; pointer-events: none; transform-style: preserve-3d; }
+  .layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
 
-  .layer {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-  }
-
-  /* Front layers */
   .front .layer-deep { background-image: url("https://picsum.photos/900/600?blur=3"); transform: translateZ(-80px) scale(1.12); }
   .front .layer-mid  { background-image: url("https://picsum.photos/900/600");        transform: translateZ(-40px) scale(1.06); }
   .front .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.5));   transform: translateZ(0); }
-
-  /* Back layers — slightly different for depth variety */
-  .back .layer-deep { background-image: url("https://picsum.photos/900/600?blur=2"); transform: translateZ(-80px) scale(1.12); }
-  .back .layer-mid  { background-image: url("https://picsum.photos/900/600?blur=1"); transform: translateZ(-40px) scale(1.06); }
-  .back .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.6));   transform: translateZ(0); }
+  .back  .layer-deep { background-image: url("https://picsum.photos/900/600?blur=2"); transform: translateZ(-80px) scale(1.12); }
+  .back  .layer-mid  { background-image: url("https://picsum.photos/900/600?blur=1"); transform: translateZ(-40px) scale(1.06); }
+  .back  .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.6));   transform: translateZ(0); }
 
   section.card-side {
     position: absolute; inset: 0; padding: 5% 6%; border-radius: 20px; color: #fff;
@@ -70,58 +63,23 @@
   }
 
   .front { background: url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; }
-  .back  { 
-    transform: rotateY(180deg); 
-    background: rgba(0,0,0,0.6) url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; 
-    background-blend-mode: overlay; 
-  }
+  .back  { transform: rotateY(180deg); background: rgba(0,0,0,0.6) url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; background-blend-mode: overlay; }
 
-  .card-content { 
-    transform: translateZ(70px); 
-    text-align: center; 
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 85%;
-  }
-
-  .card-content h2 { 
-    margin: 0;
-    border-bottom: 3px solid #39e639; 
-    padding-bottom: 8px; 
-    font-size: clamp(1.8rem, 5vw, 2.8rem); 
-    display: inline-block; 
-  }
-
-  .card-content p { 
-    margin: 0;
-    line-height: 1.6; 
-    font-size: clamp(1rem, 3vw, 1.3rem); 
-  }
+  .card-content { transform: translateZ(70px); text-align: center; display: flex; flex-direction: column; gap: 1.5rem; max-width: 85%; }
+  .card-content h2 { margin:0; border-bottom: 3px solid #39e639; padding-bottom: 8px; font-size: clamp(1.8rem, 5vw, 2.8rem); display: inline-block; }
+  .card-content p  { margin:0; line-height: 1.6; font-size: clamp(1rem, 3vw, 1.3rem); }
 
   .back a {
-    padding: 0.75rem 1.8rem;
-    border: 2px solid #39e639;
-    border-radius: 50px;
-    color: #39e639;
-    background: transparent;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
+    padding: 0.75rem 1.8rem; border: 2px solid #39e639; border-radius: 50px; color: #39e639;
+    background: transparent; text-decoration: none; font-weight: bold; font-size: 1.1rem;
     transition: all 0.3s ease;
   }
-
-  .back a:hover, .back a:focus {
-    background: #39e639;
-    color: #000;
-  }
+  .back a:hover, .back a:focus { background: #39e639; color: #000; }
 </style>
 </head>
 <body>
 
 <article class="flip-card" id="flipCard">
-
-  <!-- FRONT with full parallax -->
   <section class="card-side front">
     <figure class="layers" aria-hidden="true">
       <div class="layer layer-deep"></div>
@@ -134,7 +92,6 @@
     </div>
   </section>
 
-  <!-- BACK with full parallax too! -->
   <section class="card-side back">
     <figure class="layers" aria-hidden="true">
       <div class="layer layer-deep"></div>
@@ -147,12 +104,13 @@
       <a href="mailto:someone@example.com">Email Me</a>
     </div>
   </section>
-
 </article>
 
 <script>
   const card = document.getElementById('flipCard');
+
   card.addEventListener('click', (clickEvent) => {
+    // Only flip if clicking inside the card (not outside)
     if (clickEvent.target.closest('a')) return;
     card.classList.toggle('flipped');
   });
