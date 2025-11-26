@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Responsive Flip Card – FINAL FIXED</title>
+<title>Flip Card – Full Parallax on Both Sides</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -27,7 +27,6 @@
     cursor: pointer;
   }
 
-  /* Desktop hover */
   @media (hover: hover) and (pointer: fine) {
     article.flip-card:hover:not(.flipped) {
       transform: rotateY(180deg);
@@ -36,11 +35,32 @@
 
   article.flip-card.flipped { transform: rotateY(180deg); }
 
-  figure.layers { position: absolute; inset: 0; overflow: hidden; border-radius: 20px; pointer-events: none; }
-  .layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
-  .layer-deep { background-image: url("https://picsum.photos/900/600?blur=3"); transform: translateZ(-80px) scale(1.12); }
-  .layer-mid  { background-image: url("https://picsum.photos/900/600");        transform: translateZ(-40px) scale(1.06); }
-  .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.5));   transform: translateZ(0); }
+  /* PARALLAX LAYERS — NOW ON BOTH SIDES! */
+  figure.layers {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    pointer-events: none;
+    transform-style: preserve-3d;
+  }
+
+  .layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Front layers */
+  .front .layer-deep { background-image: url("https://picsum.photos/900/600?blur=3"); transform: translateZ(-80px) scale(1.12); }
+  .front .layer-mid  { background-image: url("https://picsum.photos/900/600");        transform: translateZ(-40px) scale(1.06); }
+  .front .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.5));   transform: translateZ(0); }
+
+  /* Back layers — slightly different for depth variety */
+  .back .layer-deep { background-image: url("https://picsum.photos/900/600?blur=2"); transform: translateZ(-80px) scale(1.12); }
+  .back .layer-mid  { background-image: url("https://picsum.photos/900/600?blur=1"); transform: translateZ(-40px) scale(1.06); }
+  .back .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.6));   transform: translateZ(0); }
 
   section.card-side {
     position: absolute; inset: 0; padding: 5% 6%; border-radius: 20px; color: #fff;
@@ -50,14 +70,18 @@
   }
 
   .front { background: url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; }
-  .back  { transform: rotateY(180deg); background: rgba(0,0,0,0.5) url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; background-blend-mode: overlay; }
+  .back  { 
+    transform: rotateY(180deg); 
+    background: rgba(0,0,0,0.6) url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; 
+    background-blend-mode: overlay; 
+  }
 
   .card-content { 
-    transform: translateZ(60px); 
+    transform: translateZ(70px); 
     text-align: center; 
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;           /* ← This creates perfect spacing */
+    gap: 1.5rem;
     max-width: 85%;
   }
 
@@ -75,9 +99,7 @@
     font-size: clamp(1rem, 3vw, 1.3rem); 
   }
 
-  /* ←←← FIXED EMAIL BUTTON ←←← */
   .back a {
-    margin-top: 0.5rem;
     padding: 0.75rem 1.8rem;
     border: 2px solid #39e639;
     border-radius: 50px;
@@ -87,7 +109,6 @@
     font-weight: bold;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    align-self: center;
   }
 
   .back a:hover, .back a:focus {
@@ -99,35 +120,40 @@
 <body>
 
 <article class="flip-card" id="flipCard">
-  <figure class="layers" aria-hidden="true">
-    <div class="layer layer-deep"></div>
-    <div class="layer layer-mid"></div>
-    <div class="layer layer-top"></div>
-  </figure>
 
+  <!-- FRONT with full parallax -->
   <section class="card-side front">
+    <figure class="layers" aria-hidden="true">
+      <div class="layer layer-deep"></div>
+      <div class="layer layer-mid"></div>
+      <div class="layer layer-top"></div>
+    </figure>
     <div class="card-content">
       <h2>Hakkam Abdullah</h2>
       <p>I am a UI/UX designer and art director specializing in front-end web design, user experience, and visual identity creation.</p>
     </div>
   </section>
 
+  <!-- BACK with full parallax too! -->
   <section class="card-side back">
+    <figure class="layers" aria-hidden="true">
+      <div class="layer layer-deep"></div>
+      <div class="layer layer-mid"></div>
+      <div class="layer layer-top"></div>
+    </figure>
     <div class="card-content">
       <h2>Contact Me</h2>
-      <p>Reach me anytime by email:</p>
+      <p>Feel free to reach me anytime.</p>
       <a href="mailto:someone@example.com">Email Me</a>
     </div>
   </section>
+
 </article>
 
 <script>
   const card = document.getElementById('flipCard');
-
-  card.addEventListener('click', function handleCardClick(clickEvent) {
-    // Prevent flip when clicking the email button
+  card.addEventListener('click', (clickEvent) => {
     if (clickEvent.target.closest('a')) return;
-
     card.classList.toggle('flipped');
   });
 </script>
