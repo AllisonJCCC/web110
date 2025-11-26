@@ -123,8 +123,11 @@
 
 <script>
   const card = document.getElementById('flipCard');
-  card.addEventListener('click', (e) => {
-    if (e.target.closest('a')) return;
+
+  card.addEventListener('click', function handleCardClick(clickEvent) {
+    // Prevent flip when clicking the email button
+    if (clickEvent.target.closest('a')) return;
+
     card.classList.toggle('flipped');
   });
 </script>
