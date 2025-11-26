@@ -1,233 +1,132 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modern 3D Flip Card – Allison Hanna</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Responsive Flip Card – FINAL FIXED</title>
 <style>
-/* ---------- Page Layout ---------- */
-body {
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #1111118d;
-    font-family: "Roboto Condensed", sans-serif;
+    background: #111;
+    font-family: Arial, sans-serif;
+    perspective: 1200px;
+  }
+
+  article.flip-card {
+    width: 90%; max-width: 700px;
+    aspect-ratio: 2 / 1;
+    border-radius: 20px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease-in-out;
+    cursor: pointer;
+  }
+
+  /* Desktop hover */
+  @media (hover: hover) and (pointer: fine) {
+    article.flip-card:hover:not(.flipped) {
+      transform: rotateY(180deg);
+    }
+  }
+
+  article.flip-card.flipped { transform: rotateY(180deg); }
+
+  figure.layers { position: absolute; inset: 0; overflow: hidden; border-radius: 20px; pointer-events: none; }
+  .layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .layer-deep { background-image: url("https://picsum.photos/900/600?blur=3"); transform: translateZ(-80px) scale(1.12); }
+  .layer-mid  { background-image: url("https://picsum.photos/900/600");        transform: translateZ(-40px) scale(1.06); }
+  .layer-top  { background: linear-gradient(transparent, rgba(0,0,0,0.5));   transform: translateZ(0); }
+
+  section.card-side {
+    position: absolute; inset: 0; padding: 5% 6%; border-radius: 20px; color: #fff;
+    backface-visibility: hidden; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    width: 100%; height: 100%;
+  }
+
+  .front { background: url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; }
+  .back  { transform: rotateY(180deg); background: rgba(0,0,0,0.5) url("https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg") center/cover; background-blend-mode: overlay; }
+
+  .card-content { 
+    transform: translateZ(60px); 
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;           /* ← This creates perfect spacing */
+    max-width: 85%;
+  }
+
+  .card-content h2 { 
     margin: 0;
-}
+    border-bottom: 3px solid #39e639; 
+    padding-bottom: 8px; 
+    font-size: clamp(1.8rem, 5vw, 2.8rem); 
+    display: inline-block; 
+  }
 
-main {
-padding: 2rem;
-}
+  .card-content p { 
+    margin: 0;
+    line-height: 1.6; 
+    font-size: clamp(1rem, 3vw, 1.3rem); 
+  }
 
-/* ---------- Card Wrapper ---------- */
-.card-wrapper {
-perspective: 1200px;
-display: inline-block;
-cursor: pointer;
-}
+  /* ←←← FIXED EMAIL BUTTON ←←← */
+  .back a {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.8rem;
+    border: 2px solid #39e639;
+    border-radius: 50px;
+    color: #39e639;
+    background: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    align-self: center;
+  }
 
-/* ---------- Card Container ---------- */
-.card {
-display: grid;
-width: 90vw;
-max-width: 700px;
-aspect-ratio: 1 / 1.5;
-transform-style: preserve-3d;
-transition: transform 1.5s ease;
-}
-
-/* JS controlled flip */
-.card-wrapper.flipped .card {
-transform: rotateY(180deg);
-}
-
-/* Hover flip only on desktop */
-@media (hover: hover) and (pointer: fine) {
-.card-wrapper:hover .card {
-transform: rotateY(180deg);
-}
-}
-
-/* ---------- Card Faces ---------- */
-.card-face {
-grid-area: 1 / 1;
-display: grid;
-place-items: center;
-border-radius: 20px;
-padding: 0;
-position: relative;
-overflow: hidden;
-backface-visibility: hidden;
-transform-style: preserve-3d;
-}
-
-/* Back face rotated */
-.back {
-transform: rotateY(180deg);
-}
-
-/* ------------------- PARALLAX LAYERS ------------------- */
-figure.layers {
-position: absolute;
-inset: 0;
-overflow: hidden;
-border-radius: 20px;
-transform-style: preserve-3d;
-}
-
-.layer {
-position: absolute;
-inset: 0;
-background-size: cover;
-background-position: center;
-transition: transform 0.8s ease;
-}
-
-.layer-deep {
-background-image: url("https://picsum.photos/900/600?blur=3");
-transform: translateZ(-80px) scale(1.12);
-}
-
-.layer-mid {
-background-image: url("https://picsum.photos/900/600");
-transform: translateZ(-40px) scale(1.06);
-}
-
-.layer-top {
-background: linear-gradient(transparent, rgba(0,0,0,0.5));
-transform: translateZ(0);
-}
-
-/* ---------- Text Content (front layer) ---------- */
-.content {
-position: relative;
-width: 90%;
-height: 60%;
-margin: 0 auto;
-padding: 1rem;
-box-sizing: border-box;
-transform: translateZ(40px);
-transition: transform 1.5s ease-in-out;
-text-align: center;
-line-height: 1.5;
-color: #fff;
-display: flex;
-flex-direction: column;
-justify-content: center;
-}
-
-.content::before {
-content: "";
-position: absolute;
-inset: 0;
-padding: 4px;
-border-radius: 15px;
-border-style: solid;
-border-width: 10px;
-border-image: linear-gradient(45deg, grey, blue, white) 1;
-pointer-events: none;
-}
-
-h1, h2 {
-margin-bottom: 1rem;
-}
-
-.contact-info {
-font-style: normal;
-margin-top: 1.5rem;
-}
-
-.contact-info a {
-color: lightblue;
-text-decoration: none;
-}
-
-.contact-info a:hover {
-text-decoration: underline;
-}
-
-/*----------------Media Queries ------------------*/
-@media (min-width: 600px) {
-.card {
-width: 80vw;
-aspect-ratio: 1.2 / 1;
-}
-}
-
-@media (max-width: 500px) {
-.back h2 {
-font-size: 1.6rem;
-}
-.back p,
-.back .contact-info {
-font-size: 1rem;
-}
-} </style>
-
+  .back a:hover, .back a:focus {
+    background: #39e639;
+    color: #000;
+  }
+</style>
 </head>
-
 <body>
-<main>
-    <div class="card-wrapper">
-        <section class="card">
 
-```
-        <!-- ===================== FRONT ===================== -->
-        <section class="card-face front">
-            <figure class="layers" aria-hidden="true">
-                <div class="layer layer-deep"></div>
-                <div class="layer layer-mid"></div>
-                <div class="layer layer-top"></div>
-            </figure>
-            <article class="content">
-                <header>
-                    <h1>Allison Hanna</h1>
-                </header>
-                <p>
-                    I am a web developer who specializes in creating engaging web experiences, 
-                    user-focused designs, and demonstrating the creativity of HTML and CSS.
-                    I’ve worked with companies of all sizes, enriching my experience.
-                </p>
-            </article>
-        </section>
+<article class="flip-card" id="flipCard">
+  <figure class="layers" aria-hidden="true">
+    <div class="layer layer-deep"></div>
+    <div class="layer layer-mid"></div>
+    <div class="layer layer-top"></div>
+  </figure>
 
-        <!-- ===================== BACK ===================== -->
-        <section class="card-face back">
-            <figure class="layers" aria-hidden="true">
-                <div class="layer layer-deep"></div>
-                <div class="layer layer-mid"></div>
-                <div class="layer layer-top"></div>
-            </figure>
-            <article class="content">
-                <header>
-                    <h2>Contact Me</h2>
-                </header>
-                <address class="contact-info">
-                    <p>
-                        Allison Hanna<br>
-                        913.555.1248
-                    </p>
-                    <a href="mailto:studentemail@jccc.edu">Email me</a>
-                </address>
-            </article>
-        </section>
+  <section class="card-side front">
+    <div class="card-content">
+      <h2>Hakkam Abdullah</h2>
+      <p>I am a UI/UX designer and art director specializing in front-end web design, user experience, and visual identity creation.</p>
+    </div>
+  </section>
 
-    </section>
-</div>
-```
-
-</main>
+  <section class="card-side back">
+    <div class="card-content">
+      <h2>Contact Me</h2>
+      <p>Reach me anytime by email:</p>
+      <a href="mailto:someone@example.com">Email Me</a>
+    </div>
+  </section>
+</article>
 
 <script>
-const cardWrappers = document.querySelectorAll('.card-wrapper');
-cardWrappers.forEach(wrapper => {
-    wrapper.addEventListener('click', () => {
-        wrapper.classList.toggle('flipped');
-    });
-});
+  const card = document.getElementById('flipCard');
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    card.classList.toggle('flipped');
+  });
 </script>
 
 </body>
