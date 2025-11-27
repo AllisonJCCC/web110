@@ -32,13 +32,6 @@
   -webkit-tap-highlight-color: transparent;
   }
 
-  /* Hover only on desktop AND only when NOT already flipped */
-  @media (hover: hover) and (pointer: fine) {
-    article.flip-card:hover:not(.flipped) {
-      transform: rotateY(180deg);
-    }
-  }
-
   /* Click/tap state – this one wins over hover! */
   article.flip-card.flipped {
     transform: rotateY(180deg) !important;   /* ← THIS IS THE FIX */
@@ -81,6 +74,12 @@
     display: inline-block;
   }
 
+  /* Hover only on desktop AND only when NOT already flipped */
+  @media (hover: hover) and (pointer: fine) {
+    article.flip-card:hover:not(.flipped) {
+      transform: rotateY(180deg);
+    }
+  }
 </style>
 </head>
 <body>
