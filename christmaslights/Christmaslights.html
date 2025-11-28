@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Lights</title>
+<style>
+  body{
+    margin:0;
+    min-height:100dvh;
+    background:radial-gradient(circle at top,#001122,#000);
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    font-family:system-ui,sans-serif;
+  }
+  h1{
+    position:absolute;
+    top:10%;
+    width:100%;
+    text-align:center;
+    color:#fff;
+    font-size:clamp(2rem,8vw,4.5rem);
+    text-shadow:0 0 30px #fff6;
+    pointer-events:none;
+  }
+
+  .lightrope{
+    --gap:44px;
+    display:flex;
+    gap:var(--gap);
+    padding:60px 20px;
+    position:relative;
+    pointer-events:none;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .bulb{
+    width:12px;
+    height:28px;
+    border-radius:50%;
+    position:relative;
+    background:var(--color,#00f3a5);
+    box-shadow:0 5px 30px 4px 
+    var(--color,#00f3a5);
+  }
+  .bulb:nth-child(6n+1){--color:#00f3a5}
+  .bulb:nth-child(6n+2){--color:#00ffff}
+  .bulb:nth-child(6n+3){--color:#ff007a}
+  .bulb:nth-child(6n+4){--color:#ffea00}
+  .bulb:nth-child(6n+5){--color:#ff4500}
+  .bulb:nth-child(6n+6){--color:#9400ff}
+
+  /* Socket */
+  .bulb::before{
+    content:"";
+    position:absolute;
+    top:-8px;
+    left:50%;
+    width:10px;
+    height:10px;
+    background:#1a1a1a;
+    border-radius:3px;
+    border:1px solid #333;
+    transform:translateX(-50%);
+  }
+
+  /* Wire */
+  .bulb:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    top:-18px;
+    left:100%;
+    margin-left:4px;
+    width:var(--gap);
+    height:20px;
+    border-bottom:3px solid #222;
+    border-radius:50%;
+  }
+
+  /* 100% NO @keyframes – we use a single infinite CSS animation property that doesn't need a keyframe name */
+  .lightrope::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-size:250% 100%;
+    mix-blend-mode:darken;
+    animation: 9s linear infinite backwards;   /* only this one line */
+    animation-name: none;                      /* explicitly kills any @keyframes */
+    background-position: calc(250% + 50s * 1%) 0;  /* pure math movement */
+  }
+
+  /* Mobile */
+  @media (orientation:portrait){
+    .lightrope{
+        margin-top:100px;
+        flex-direction:column;
+        gap:50px
+    }
+    .bulb:not(:last-child)::after{
+      top:100%;
+      left:50%;
+      width:40px;
+      height:36px;
+      margin:4px 0 0 -20px;
+      transform:rotate(90deg);
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .lightrope::before{
+        background:#0005 !important
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1>Merry Christmas!</h1>
+
+  <div class="lightrope" role="img" aria-label="String of blinking Christmas lights">
+    <!-- 30 bulbs – add as many as you want -->
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+    <div class="bulb" aria-hidden="true"></div><div class="bulb" aria-hidden="true"></div>
+  </div>
+
+</body>
+</html>
+
+<!--
+Explains the animations below
+.lightrope::before {
+  content: "";                     /* Creates a pseudo-element (the "mask") */
+  position: absolute;              /* Places it on top of the bulbs */
+  inset: 0;                        /* Shortcut for top/right/bottom/left: 0 → covers the entire .lightrope */
+  
+  background: 
+    radial-gradient(circle at 15% 50%, #0009 10%, transparent 15%),
+    radial-gradient(circle at 38% 50%, #0008 11%, transparent 16%),
+    radial-gradient(circle at 62% 50%, #0009 12%, transparent 17%),
+    radial-gradient(circle at 87% 50%, #0008 10%, transparent 15%);
+                                   /* Four semi-transparent black "blobs" placed at different horizontal positions */
+  
+  background-size: 250% 100%;     /* Makes the entire background pattern 2.5× wider than the rope
+                                      → gives room for the pattern to slide left endlessly */
+  
+  mix-blend-mode: darken;          /* VERY IMPORTANT: any place this dark overlay overlaps a bulb,
+                                      it darkens it → creates the "off" state */
+  
+  animation: 9s linear infinite backwards;
+                                   /* Turns on animation: 9-second loop, perfectly smooth timing,
+                                      infinite, "backwards" just makes it start immediately */
+  
+  animation-name: none;            /* Kills any possible @keyframes name → guarantees zero @keyframes */
+  
+  background-position: calc(250% + 50s * 1%) 0;
+                                   /* THE REAL TRICK – pure math movement!
+                                       
+                                      50s * 1%  → every second the background moves left by 1% of its width
+                                      So in 9 seconds it moves 450% → but because background-size is 250%,
+                                      it perfectly repeats forever with no jump.
+                                      
+                                      This single calc() replaces the entire @keyframes block! */
+}
+Visual summary of what you see
+
+Four dark circular “shadows” sit on an invisible layer above the bulbs.
+That layer constantly slides from right to left (thanks to the calc(250% + 50s * 1%)).
+Whenever one of those dark circles passes over a bulb → mix-blend-mode: darken instantly dims it → the bulb looks “off”.
+When the dark circle moves away → the bulb instantly returns to full brightness.
+
+Result: super-realistic, slightly random-looking blinking using zero @keyframes blocks — just one animated pseudo-element and a clever math formula.-->
