@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+       <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+       <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@200;300;400&display=swap"
+      rel="stylesheet/">
+  <style>
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  overflow: hidden;
+  background-color: #06482d;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.ball-wrapper {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 2;
+  -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+  animation: pendulum 3.5s ease-in-out alternate infinite;
+  -webkit-animation: pendulum 3.5s ease-in-out alternate infinite;
+}
+
+@-webkit-keyframes pendulum {
+  0% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  50% {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+}
+@keyframes pendulum {
+  0% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  50% {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+}
+
+.ball {
+  width: 20vw;
+  height: 20vw;
+  background: -webkit-radial-gradient(7vw 7vw, circle, #e30a2a, #000);
+  -webkit-box-shadow: -10px 8px 20px 6px #3002026b, 10px 8px 20px 6px #3002026b;
+  box-shadow: -10px 8px 20px 6px #3002026b, 10px 8px 20px 6px #3002026b;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.ball-wire {
+  width: 0.2vw;
+  height: 30vh;
+  background: rgb(135, 131, 109);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(135, 131, 109, 1)),
+    color-stop(63%, rgba(227, 218, 191, 1)),
+    to(rgba(133, 129, 100, 1))
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(135, 131, 109, 1) 0%,
+    rgba(227, 218, 191, 1) 63%,
+    rgba(133, 129, 100, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(135, 131, 109, 1) 0%,
+    rgba(227, 218, 191, 1) 63%,
+    rgba(133, 129, 100, 1) 100%
+  );
+  z-index: 1;
+}
+.cube {
+  width: 4vw;
+  height: 3vw;
+  background: rgb(135, 131, 109);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(135, 131, 109, 1)),
+    color-stop(63%, rgba(227, 218, 191, 1)),
+    to(rgba(133, 129, 100, 1))
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(135, 131, 109, 1) 0%,
+    rgba(227, 218, 191, 1) 63%,
+    rgba(133, 129, 100, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(135, 131, 109, 1) 0%,
+    rgba(227, 218, 191, 1) 63%,
+    rgba(133, 129, 100, 1) 100%
+  );
+  margin-bottom: -1vw;
+  position: relative;
+  z-index: -1;
+}
+
+
+.circle { /*shadow for ornament */
+  width: 18vw;
+  height: 18vw;
+  border: 5.5vw solid #dfceac;
+  border-radius: 50%;
+  position: relative;
+   -webkit-box-shadow: 0.2vw -0.8vw 1vw 0vw #0a0a0a52,
+    inset -0.3vw 0.1vw 1vw 0vw #0a0a0a61;
+  box-shadow: 0.2vw -0.8vw 1vw 0vw #0a0a0a52,
+    inset -0.3vw 0.1vw 1vw 0vw #0a0a0a61;
+  z-index: -1;
+}
+.ring{
+  height:15px;
+  width: 12px;
+  background-color: ##c03636;
+  border: 2px solid  #f99d24;
+  border-radius: 45%;
+  position: relative;
+  left: -1px;
+  top: 1px;
+}
+.rectangle {
+  width: 18vw;
+  height: 5.5vw;
+  background: #dfceac;
+  margin-top: 0.5vw;
+  -webkit-box-shadow: 0.4vw 0.5vw 2vw 0vw #0a0a0a4f;
+  box-shadow: 0.4vw 0.5vw 2vw 0vw #0a0a0a4f;
+}
+.text {
+  height: 8vw;
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  align-items: flex-start;
+  justify-content: flex-start;
+    padding: 0.5vw;
+      }
+      
+  p {
+    font-family: "Spartan", sans-serif;
+    color: #dfceac;
+    font-size: 3em;
+    line-height: 1.6;
+    text-shadow: 6px -2px 7px #000000;
+  }
+ hr{
+  border: 1px solid #051806;
+  border-radius: 5px;
+  
+      }
+      </style>
+
+}
+
+  </head>
+     <body class="background">
+       <div >
+          <p class="text">
+            Merry Christmas &  Happy New Year!
+          </p>
+        
+        </div>
+     
+     <hr>
+<div class="ball-wrapper">
+      <div class="ball-wire"></div>
+      <div class="ring"></div>
+      <div class="cube"></div>
+      <div class="ball"></div>
+    </div>
+        </body>
+</html>
