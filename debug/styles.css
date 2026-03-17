@@ -1,0 +1,214 @@
+/* Allison Hanna */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #16213e;
+      border-bottom: 4px solid #3a6b4f;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      color: #a0aec0;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e94560;
+      color: white;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .badge.devtools { background: #f6a623; }
+    .badge.css      { background: #7c3aed; }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .intro {
+      background: #16213e;
+      border-left: 4px solid #3a6b4f;
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+      color: #c0c0d0;
+    }
+
+    .intro strong { color: #fff; }
+
+    .bug-card {
+      background: #16213e;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      border: 1px solid #2a2a4a;
+    }
+
+    .bug-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: #0f0f23;
+      border-bottom: 1px solid #2a2a4a;
+    }
+
+    .bug-number {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #3a6b4f;
+      font-family: monospace;
+      min-width: 2rem;
+    }
+
+    .bug-title {
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .bug-body {
+      padding: 1.5rem;
+    }
+
+    .bug-body h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #718096;
+      margin-bottom: 0.5rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .bug-body p {
+      margin-bottom: 1.2rem;
+      color: #c0c0d0;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #0a0a1a;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      overflow-x: auto;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #2a2a4a;
+      white-space: pre-wrap;
+    }
+
+    .broken  { color: #fc8181; }
+    .fixed   { color: #68d391; }
+    .comment { color: #718096; }
+
+    .tool-note {
+      background: #0f0f23;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      font-size: 0.88rem;
+      color: #a0aec0;
+      font-family: monospace;
+      border-left: 3px solid #4a5568;
+    }
+
+    .tool-note.validator { border-left-color: #e94560; }
+    .tool-note.devtools  { border-left-color: #f6a623; }
+    .tool-note.css       { border-left-color: #7c3aed; }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .summary-table th {
+      background: #0f0f23;
+      color: #a0aec0;
+      text-align: left;
+      padding: 0.8rem 1rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .summary-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #2a2a4a;
+      color: #c0c0d0;
+      vertical-align: top;
+    }
+
+    .summary-table tr:last-child td { border-bottom: none; }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      font-family: monospace;
+      white-space: nowrap;
+    }
+
+    .pill.validator { background: #e9456022; color: #fc8181; border: 1px solid #e9456055; }
+    .pill.devtools  { background: #f6a62322; color: #fbd38d; border: 1px solid #f6a62355; }
+    .pill.css       { background: #7c3aed22; color: #b794f4; border: 1px solid #7c3aed55; }
+
+    .section-heading {
+      font-size: 1.4rem;
+      color: #fff;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #2a2a4a;
+      letter-spacing: 1px;
+    }
+
+    .log-template {
+      background: #0f0f23;
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: #a0aec0;
+      border: 1px dashed #2a2a4a;
+      line-height: 2;
+    }
+
+    .log-template .label { color: #68d391; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #4a5568;
+      font-size: 0.85rem;
+      border-top: 1px solid #2a2a4a;
+      margin-top: 2rem;
+    }

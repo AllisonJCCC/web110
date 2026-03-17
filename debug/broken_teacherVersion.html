@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riverside Animal Shelter</title>
+  <style>
+
+    /* ===== GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f0eb;
+      color: #2c2c2c;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background-color: #3a6b4f;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #ffffff;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      color: #c8e6c9;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      background-color: #2c5440;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      /* BUG 6: color and background-color are swapped — text becomes invisible on hover */
+      color: #2c5440;
+      background-color: #2c5440;
+      padding: 0.2rem 0.5rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem;
+      background-color: #e8f5e9;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      color: #3a6b4f;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      /* BUG 7: margin should be "0 auto" to center — "auto 0" pushes it to top/bottom, not centered */
+      margin: auto 0;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* ===== PETS GRID ===== */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #3a6b4f;
+      padding: 2rem 0 1rem;
+    }
+
+    .pets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 2rem 3rem;
+    }
+
+    .pet-card {
+      background: #ffffff;
+      border-radius: 12px;
+      width: 220px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .pet-card .pet-emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pet-card h3 {
+      font-size: 1.2rem;
+      color: #3a6b4f;
+      margin-bottom: 0.3rem;
+    }
+
+    .pet-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .adopt-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #3a6b4f;
+      color: white;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT ===== */
+    address {
+      background-color:#3a6b4f;
+      color: #eeeeee;
+      text-align: center;
+      padding: 2.5rem;
+    }
+
+    address h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    address p {
+      font-size: 1rem;
+      line-height: 2;
+    
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #f0ecec;
+      color: #121111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1> Riverside Animal Shelter</h1>
+    <p>Finding forever homes since 1998</p>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Adopt</a>
+    <a href="#">Volunteer</a>
+    <a href="#">Donate</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <!-- BUG 1 (Validator): <section> tag is never closed -->
+  <section class="hero">
+    <h2>Give a Pet a Second Chance</h2>
+    <p>Every animal at Riverside deserves love, warmth, and a family to call their own.
+       Browse our available pets and open your heart today.</p>
+
+  <!-- FEATURED PETS -->
+  <h2 class="section-title">Meet Our Animals</h2>
+
+  <div class="pets-grid">
+
+    <!-- BUG 2 (Validator): <img> tag is missing the required alt attribute -->
+    <article class="pet-card">
+      <img src="cat.webp" width="120" height="120">
+      <h3>Luna</h3>
+      <p>2-year-old tabby cat. Loves cuddles and sunny windowsills.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+    <article class="pet-card">
+         <img src="dog.webp" width="120" height="120">
+      <h3>Biscuit</h3>
+      <p>3-year-old beagle mix. Great with kids and other dogs.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+    <article class="pet-card">
+      <img src="bunny.webp" width="120" height="120">
+      <h3>Clover</h3>
+      <p>1-year-old Holland Lop rabbit. Gentle and curious.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+    <!-- BUG 3 (validator): <em> is an inline element wrapping <h3> which is a block element -->
+    <!-- BUG 4 (validator): <p class="pet card is causing spacing issues" Open Dev Tools with arrow to see issue -->
+      <article class="pet-card">
+        <p class="pet-card">
+       <em>
+        <img src="hamster.webp" width="120" height="120">
+        <h3>Peanut</h3>
+      </em>
+   
+       <p> 6-month-old hamster. Tiny, fast, and full of personality.</p>
+       <a href="#" class="adopt-btn">Adopt Me</a>
+         </p>
+      </article>
+    </div>
+
+</section> <!-- should be closed here to fix text align problem below-->
+
+  <!-- CONTACT -->
+  <address>
+    <h2>Visit Us Today</h2>
+    <p> 412 Riverside Drive, Overland Park, KS</p>
+    <p> (913) 555-0192</p>
+    <p> adopt@riversideshelter.org</p>
+    <p> Mon–Sat: 10am – 6pm &nbsp;|&nbsp; Sun: 12pm – 4pm</p>
+  </address>
+
+  <!-- FOOTER -->
+  <!-- BUG 5 (Validator): closing </body> tag is missing -->
+  <footer>
+    <p>&copy; 2025 Riverside Animal Shelter. All rights reserved.</p>
+  </footer>
+
+</html>

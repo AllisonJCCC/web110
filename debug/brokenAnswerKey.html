@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broken Code Clinic — Instructor Answer Key</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>🔍 Broken Code Clinic</h1>
+  <p>Instructor Answer Key &nbsp;·&nbsp; Riverside Animal Shelter &nbsp;·&nbsp; 8 Bugs Documented</p>
+</header>
+
+<main>
+
+  <div class="intro">
+    <strong>How to use this key:
+    </strong> Each bug is tagged by which tool reveals it —
+    <span class="pill validator">W3C Validator</span>
+    <span class="pill devtools">DevTools</span>
+    <span class="pill css">CSS Visual</span> —
+    reinforcing the core lesson: <strong>no single tool catches everything.</strong>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <h2 class="section-heading">Bug Summary</h2>
+
+  <div class="bug-card">
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Bug</th>
+          <th>Location</th>
+          <th>Caught By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Unclosed &lt;section class="hero"&gt;</td>
+          <td>HTML — hero section</td>
+          <td><span class="pill validator">W3C Validator</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Missing alt attributes on all four &lt;img&gt; tags</td>
+          <td>HTML — pets grid</td>
+          <td><span class="pill validator">W3C Validator</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>&lt;em&gt; wrapping block-level &lt;h3&gt;</td>
+          <td>HTML — Peanut card</td>
+          <td><span class="pill validator">DevTools</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>&lt;p&gt; nested inside &lt;p&gt; (block inside block)</td>
+          <td>HTML — Peanut card</td>
+          <td><span class="pill validator">DevTools</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Missing &lt;/body&gt; closing tag</td>
+          <td>HTML — end of file</td>
+          <td><span class="pill validator">W3C Validator</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Nav hover: text color same as background — invisible</td>
+          <td>CSS — nav a:hover</td>
+          <td><span class="pill css">CSS Visual</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Hero paragraph: margin: auto 0 instead of 0 auto</td>
+          <td>CSS — .hero p</td>
+          <td><span class="pill css">CSS Visual</span></td>
+        </tr>
+        </table>
+  </div>
+
+  <!-- DETAILED WRITEUPS -->
+  <h2 class="section-heading">Detailed Bug Breakdown</h2>
+
+  <!-- BUG 1 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">01</span>
+      <span class="bug-title">Unclosed &lt;section class="hero"&gt; <span class="badge">Validator</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p>The hero <code>&lt;section&gt;</code> is opened but never closed. This means the pets grid, contact section, and footer are all technically nested inside the hero — breaking document structure and causing unexpected background colors and spacing to bleed into the rest of the page.</p>
+      <h4>Broken code</h4>
+      <pre><span class="broken">&lt;section class="hero"&gt;</span>
+  &lt;h2&gt;Give a Pet a Second Chance&lt;/h2&gt;
+  &lt;p&gt;Every animal at Riverside...&lt;/p&gt;
+<span class="comment">                               &lt;!-- no closing tag! --&gt;</span>
+&lt;h2 class="section-title"&gt;Meet Our Animals&lt;/h2&gt;</pre>
+      <h4>Fixed code</h4>
+      <pre><span class="fixed">&lt;section class="hero"&gt;</span>
+  &lt;h2&gt;Give a Pet a Second Chance&lt;/h2&gt;
+  &lt;p&gt;Every animal at Riverside...&lt;/p&gt;
+<span class="fixed">&lt;/section&gt;</span>
+
+&lt;h2 class="section-title"&gt;Meet Our Animals&lt;/h2&gt;</pre>
+      <div class="tool-note validator"> W3C Validator → flags unclosed element or unexpected end tag</div>
+    </div>
+  </div>
+
+  <!-- BUG 2 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">02</span>
+      <span class="bug-title">Missing alt attributes on all four &lt;img&gt; tags <span class="badge">Validator</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p>Every <code>&lt;img&gt;</code> tag on the page is missing a required <code>alt</code> attribute. This fails W3C validation and is an accessibility violation — screen readers used by visually impaired users have nothing to announce for these images.</p>
+      <h4>Broken code</h4>
+      <pre><span class="broken">&lt;img src="cat.webp" width="120" height="120"&gt;
+&lt;img src="dog.webp" width="120" height="120"&gt;
+&lt;img src="bunny.webp" width="120" height="120"&gt;
+&lt;img src="hamster.webp" width="120" height="120"&gt;</span></pre>
+      <h4>Fixed code</h4>
+      <pre><span class="fixed">&lt;img src="cat.webp" width="120" height="120" alt="Luna the tabby cat"&gt;
+&lt;img src="dog.webp" width="120" height="120" alt="Biscuit the beagle mix"&gt;
+&lt;img src="bunny.webp" width="120" height="120" alt="Clover the Holland Lop rabbit"&gt;
+&lt;img src="hamster.webp" width="120" height="120" alt="Peanut the hamster"&gt;</span></pre>
+      <div class="tool-note validator"> W3C Validator → "An img element must have an alt attribute" (reported four times)</div>
+    </div>
+  </div>
+
+  <!-- BUG 3 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">03</span>
+      <span class="bug-title">&lt;em&gt; wrapping block-level &lt;h3&gt; <span class="badge devtools">DevTools</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p><code>&lt;em&gt;</code> is an inline element. It cannot wrap a block-level element like <code>&lt;h3&gt;</code>. The browser silently restructures the DOM to fix this — but the result is that the italic styling may not apply as expected, and the document structure is invalid. The W3C validator will not catch this in HTML5 mode.</p>
+      <h4>How to see it</h4>
+      <p>Open DevTools → Elements panel. You will see the browser has restructured the markup — the <code>&lt;em&gt;</code> has been moved inside the <code>&lt;h3&gt;</code>, not around it.</p>
+      <h4>Broken code</h4>
+      <pre><span class="broken">&lt;em&gt;
+  &lt;h3&gt;Peanut&lt;/h3&gt;
+&lt;/em&gt;</span></pre>
+      <h4>Fixed code</h4>
+      <pre><span class="fixed">&lt;h3&gt;&lt;em&gt;Peanut&lt;/em&gt;&lt;/h3&gt;</span></pre>
+      <div class="tool-note devtools"> DevTools → Elements panel shows the browser rewrote the DOM structure</div>
+    </div>
+  </div>
+
+  <!-- BUG 4 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">04</span>
+      <span class="bug-title">&lt;p&gt; nested inside &lt;p&gt; <span class="badge devtools">DevTools</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p>The Peanut card has a <code>&lt;p class="pet-card"&gt;</code> wrapping the entire card content, and then another <code>&lt;p&gt;</code> for the description text inside it. A <code>&lt;p&gt;</code> tag cannot contain another <code>&lt;p&gt;</code> — paragraphs are block elements and cannot nest. The browser will auto-close the outer <code>&lt;p&gt;</code> early, breaking the card layout.</p>
+      <h4>How to see it</h4>
+      <p>Open DevTools → Elements panel. The Peanut card will look structurally different from the other three cards. The outer <code>&lt;p&gt;</code> will have been auto-closed by the browser before the inner one opens.</p>
+      <h4>Broken code</h4>
+      <pre><span class="broken">&lt;p class="pet-card"&gt;               &lt;!-- outer p opens --&gt;
+  &lt;img src="hamster.webp"...&gt;
+  &lt;h3&gt;Peanut&lt;/h3&gt;
+  &lt;p&gt;6-month-old hamster...&lt;/p&gt;   &lt;!-- inner p — invalid! --&gt;
+  &lt;a href="#"&gt;Adopt Me&lt;/a&gt;
+&lt;/p&gt;</span></pre>
+      <h4>Fixed code</h4>
+      <pre><span class="fixed">&lt;article class="pet-card"&gt;
+  &lt;img src="hamster.webp"...&gt;
+  &lt;h3&gt;&lt;em&gt;Peanut&lt;/em&gt;&lt;/h3&gt;
+  &lt;p&gt;6-month-old hamster...&lt;/p&gt;
+  &lt;a href="#"&gt;Adopt Me&lt;/a&gt;
+&lt;/article&gt;</span></pre>
+      <div class="tool-note devtools"> DevTools → Elements panel shows the Peanut card has different DOM structure than the other three cards</div>
+    </div>
+  </div>
+
+  <!-- BUG 5 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">05</span>
+      <span class="bug-title">Missing &lt;/body&gt; closing tag <span class="badge">Validator</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p>The file ends with <code>&lt;/html&gt;</code> but is missing the <code>&lt;/body&gt;</code> tag before it. Browsers handle this gracefully through error recovery, but it is invalid HTML and will be flagged by the validator. In larger projects, a missing <code>&lt;/body&gt;</code> can cause scripts placed before it to behave unexpectedly.</p>
+      <h4>Broken code</h4>
+      <pre>  &lt;footer&gt;...&lt;/footer&gt;
+
+<span class="broken">&lt;/html&gt;</span></pre>
+      <h4>Fixed code</h4>
+      <pre>  &lt;footer&gt;...&lt;/footer&gt;
+
+<span class="fixed">&lt;/body&gt;</span>
+&lt;/html&gt;</pre>
+      <div class="tool-note validator"> W3C Validator → "End of file seen when there were open elements" or missing end tag warning</div>
+    </div>
+  </div>
+
+  <!-- BUG 6 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">06</span>
+      <span class="bug-title">Nav hover: text becomes invisible <span class="badge css">CSS Visual</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p>In the <code>nav a:hover</code> rule, both <code>color</code> (the text) and <code>background-color</code> are set to the same value — <code>#2c5440</code>. When a user hovers over a nav link, the text disappears completely because it is the same color as the background. No validator or DevTools error will appear; this is a pure visual logic bug.</p>
+      <h4>How to see it</h4>
+      <p>Hover your mouse over any navigation link. The text vanishes. Open DevTools → Elements → force the <code>:hover</code> state in the Styles panel to inspect both values side by side.</p>
+      <h4>Broken code</h4>
+      <pre>nav a:hover {
+  <span class="broken">color: #2c5440;            /* same value as background! */
+  background-color: #2c5440;</span>
+  padding: 0.2rem 0.5rem;
+}</pre>
+      <h4>Fixed code</h4>
+      <pre>nav a:hover {
+  <span class="fixed">color: #ffffff;            /* white text — visible on dark background */
+  background-color: #2c5440;</span>
+  padding: 0.2rem 0.5rem;
+}</pre>
+      <div class="tool-note css"> CSS Visual bug — hover over a nav link and watch the text disappear</div>
+    </div>
+  </div>
+
+  <!-- BUG 7 -->
+  <div class="bug-card">
+    <div class="bug-header">
+      <span class="bug-number">07</span>
+      <span class="bug-title">Hero paragraph not centered: margin: auto 0 <span class="badge css">CSS Visual</span></span>
+    </div>
+    <div class="bug-body">
+      <h4>What's wrong</h4>
+      <p>CSS shorthand <code>margin: auto 0</code> means <em>top and bottom = auto, left and right = 0</em>. To horizontally center a block element with a fixed width, you need <code>margin: 0 auto</code>, which sets left and right margins to auto — pushing the element to the middle. The hero paragraph appears left-aligned instead of centered despite having <code>max-width: 600px</code> set.</p>
+      <h4>How to see it</h4>
+      <p>The hero text sits against the left edge of the page instead of being centered. Open DevTools → Box Model — you will see the left and right margins are both 0.</p>
+      <h4>Broken code</h4>
+      <pre>.hero p {
+  max-width: 600px;
+  <span class="broken">margin: auto 0;    /* top/bottom = auto — does NOT center horizontally */</span>
+}</pre>
+      <h4>Fixed code</h4>
+      <pre>.hero p {
+  max-width: 600px;
+  <span class="fixed">margin: 0 auto;    /* left/right = auto — centers the block element */</span>
+}</pre>
+      <div class="tool-note css"> CSS Visual bug — hero paragraph is left-aligned. DevTools Box Model confirms left/right margins are 0.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Broken Code Clinic — Instructor Answer Key &nbsp;·&nbsp; Not for student distribution
+</footer>
+
+</body>
+</html>

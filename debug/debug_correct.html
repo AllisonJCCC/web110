@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riverside Animal Shelter</title>
+  <style>
+
+    /* ===== GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f0eb;
+      color: #2c2c2c;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background-color: #3a6b4f;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #ffffff;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      color: #c8e6c9;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      background-color: #2c5440;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      /* FIX 6: text color changed to white so it is visible against the dark background */
+      color: #ffffff;
+      background-color: #2c5440;
+      padding: 0.2rem 0.5rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem;
+      background-color: #e8f5e9;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      color: #3a6b4f;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      /* FIX 7: changed from "auto 0" to "0 auto" to horizontally center the paragraph */
+      margin: 0 auto;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* ===== PETS GRID ===== */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #3a6b4f;
+      padding: 2rem 0 1rem;
+    }
+
+    .pets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 2rem 3rem;
+    }
+
+    .pet-card {
+      background: #ffffff;
+      border-radius: 12px;
+      width: 220px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .pet-card .pet-emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pet-card h3 {
+      font-size: 1.2rem;
+      color: #3a6b4f;
+      margin-bottom: 0.3rem;
+    }
+
+    .pet-card p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .adopt-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #3a6b4f;
+      color: white;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT ===== */
+    /* FIX 8: moved heading styles to the wrapping section, kept address for contact details only */
+    .contact {
+      background-color: #3a6b4f;
+      color: #eeeeee;
+      text-align: center;
+      padding: 2.5rem;
+    }
+
+    .contact h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    address p {
+      font-size: 1rem;
+      line-height: 2;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #f0ecec;
+      color: #121111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Riverside Animal Shelter</h1>
+    <p>Finding forever homes since 1998</p>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Adopt</a>
+    <a href="#">Volunteer</a>
+    <a href="#">Donate</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <!-- FIX 1: <section> is now properly closed after the hero paragraph -->
+  <section class="hero">
+    <h2>Give a Pet a Second Chance</h2>
+    <p>Every animal at Riverside deserves love, warmth, and a family to call their own.
+       Browse our available pets and open your heart today.</p>
+  </section>
+
+  <!-- FEATURED PETS -->
+  <h2 class="section-title">Meet Our Animals</h2>
+
+  <div class="pets-grid">
+
+    <!-- FIX 2: alt attributes added to all four img tags -->
+    <article class="pet-card">
+      <img src="cat.webp" width="120" height="120" alt="Luna the tabby cat">
+      <h3>Luna</h3>
+      <p>2-year-old tabby cat. Loves cuddles and sunny windowsills.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+    <article class="pet-card">
+      <img src="dog.webp" width="120" height="120" alt="Biscuit the beagle mix">
+      <h3>Biscuit</h3>
+      <p>3-year-old beagle mix. Great with kids and other dogs.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+    <article class="pet-card">
+      <img src="bunny.webp" width="120" height="120" alt="Clover the Holland Lop rabbit">
+      <h3>Clover</h3>
+      <p>1-year-old Holland Lop rabbit. Gentle and curious.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+    <!-- FIX 3: <em> moved inside <h3> — inline element must be inside block, not wrapping it -->
+    <!-- FIX 4: removed invalid <p> inside <article>, and removed nested <p> inside <p> -->
+    <article class="pet-card">
+      <img src="hamster.webp" width="120" height="120" alt="Peanut the hamster">
+      <h3><em>Peanut</em></h3>
+      <p>6-month-old hamster. Tiny, fast, and full of personality.</p>
+      <a href="#" class="adopt-btn">Adopt Me</a>
+    </article>
+
+  </div>
+
+  <!-- CONTACT -->
+  <!-- FIX 8: <h2> moved outside <address> — address is for contact details only -->
+  <section class="contact">
+    <h2>Visit Us Today</h2>
+    <address>
+      <p>412 Riverside Drive, Overland Park, KS</p>
+      <p>(913) 555-0192</p>
+      <p>adopt@riversideshelter.org</p>
+      <p>Mon–Sat: 10am – 6pm &nbsp;|&nbsp; Sun: 12pm – 4pm</p>
+    </address>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Riverside Animal Shelter. All rights reserved.</p>
+  </footer>
+
+<!-- FIX 5: </body> tag restored -->
+</body>
+</html>
