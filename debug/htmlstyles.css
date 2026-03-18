@@ -125,7 +125,7 @@
       border-radius: 8px;         /* ← looks better (optional) */
       display: block;             /* removes unwanted bottom gap */
       margin: 0 auto 1rem;        /* centers + adds space below */
-}
+    }
 
     .adopt-btn {
       display: inline-block;
