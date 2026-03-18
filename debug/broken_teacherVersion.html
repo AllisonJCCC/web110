@@ -37,21 +37,21 @@
 
     <!-- BUG 2 (Validator): <img> tag is missing the required alt attribute -->
     <article class="pet-card">
-      <img src="cat.webp" width="120" height="120">
+      <img src="cat.webp" alt="Cats are funny" width="120" height="120">
       <h3>Luna</h3>
       <p>2-year-old tabby cat. Loves cuddles and sunny windowsills.</p>
       <a href="#" class="adopt-btn">Adopt Me</a>
     </article>
 
     <article class="pet-card">
-         <img src="dog.webp" width="120" height="120">
+         <img src="dog.webp" alt="Dogs are cute" width="120" height="120">
       <h3>Biscuit</h3>
       <p>3-year-old beagle mix. Great with kids and other dogs.</p>
       <a href="#" class="adopt-btn">Adopt Me</a>
     </article>
 
     <article class="pet-card">
-      <img src="bunny.webp" width="120" height="120">
+      <img src="bunny.webp" alt="Bunnies are adorable" width="120" height="120">
       <h3>Clover</h3>
       <p>1-year-old Holland Lop rabbit. Gentle and curious.</p>
       <a href="#" class="adopt-btn">Adopt Me</a>
@@ -60,19 +60,18 @@
     <!-- BUG 3 (validator): <em> is an inline element wrapping <h3> which is a block element -->
     <!-- BUG 4 (validator): <p class="pet card is causing spacing issues" Open Dev Tools with arrow to see issue -->
       <article class="pet-card">
-        <img src="hamster.webp" width="120" height="120">
+        <img src="hamster.webp"  alt="Hamsters are small " width="120" height="120">
         <h3> <em>Peanut</em></h3>
         <p> 6-month-old hamster. Tiny, fast, and full of personality.</p>
         <a href="#" class="adopt-btn">Adopt Me</a>
-        </p>
-      </article>
+        </article>
     </div>
 
 </section> <!-- should be closed here to fix text align problem below-->
 
   <!-- CONTACT -->
   <address>
-    <h2>Visit Us Today</h2>
+    <p>Visit Us Today</p>
     <p> 412 Riverside Drive, Overland Park, KS</p>
     <p> (913) 555-0192</p>
     <p> adopt@riversideshelter.org</p>
