@@ -129,6 +129,11 @@
       font-size: 0.9rem;
     }
 
+      img{
+      max-width:100%;
+      height:auto;
+    }
+    
     /* ===== CONTACT ===== */
     address {
       background-color:#3a6b4f;
