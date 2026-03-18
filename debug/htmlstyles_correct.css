@@ -49,9 +49,9 @@
 
     nav a:hover {
       /* BUG 6: color and background-color are swapped — text becomes invisible on hover */
-      color: #2c5440;
+      color: #dcc148;
       background-color: #2c5440;
-     
+      text-decoration: underline;
      
     }
 
