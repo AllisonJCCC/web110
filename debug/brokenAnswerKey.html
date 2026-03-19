@@ -53,28 +53,22 @@
           <td>3</td>
           <td>&lt;em&gt; wrapping block-level &lt;h3&gt;</td>
           <td>HTML — Peanut card</td>
-          <td><span class="pill validator">DevTools</span></td>
+          <td><span class="pill validator">W3C validator</span></td>
         </tr>
         <tr>
           <td>4</td>
-          <td>&lt;p&gt; nested inside &lt;p&gt; (block inside block)</td>
-          <td>HTML — Peanut card</td>
-          <td><span class="pill validator">DevTools</span></td>
-        </tr>
-        <tr>
-          <td>5</td>
           <td>Missing &lt;/body&gt; closing tag</td>
           <td>HTML — end of file</td>
           <td><span class="pill validator">W3C Validator</span></td>
         </tr>
         <tr>
-          <td>6</td>
+          <td>5</td>
           <td>Nav hover: text color same as background — invisible</td>
           <td>CSS — nav a:hover</td>
           <td><span class="pill css">CSS Visual</span></td>
         </tr>
         <tr>
-          <td>7</td>
+          <td>6</td>
           <td>Hero paragraph: margin: auto 0 instead of 0 auto</td>
           <td>CSS — .hero p</td>
           <td><span class="pill css">CSS Visual</span></td>
@@ -144,47 +138,16 @@
       <h4>What's wrong</h4>
       <p><code>&lt;em&gt;</code> is an inline element. It cannot wrap a block-level element like <code>&lt;h3&gt;</code>. The browser silently restructures the DOM to fix this — but the result is that the italic styling may not apply as expected, and the document structure is invalid. The W3C validator will not catch this in HTML5 mode.</p>
       <h4>How to see it</h4>
-      <p>Open DevTools → Elements panel. You will see the browser has restructured the markup — the <code>&lt;em&gt;</code> has been moved inside the <code>&lt;h3&gt;</code>, not around it.</p>
+      <p> Validator caught this error as it's listed on the webpage.</p>
       <h4>Broken code</h4>
       <pre><span class="broken">&lt;em&gt;
   &lt;h3&gt;Peanut&lt;/h3&gt;
 &lt;/em&gt;</span></pre>
       <h4>Fixed code</h4>
       <pre><span class="fixed">&lt;h3&gt;&lt;em&gt;Peanut&lt;/em&gt;&lt;/h3&gt;</span></pre>
-      <div class="tool-note devtools"> DevTools → Elements panel shows the browser rewrote the DOM structure</div>
     </div>
-  </div>
 
   <!-- BUG 4 -->
-  <div class="bug-card">
-    <div class="bug-header">
-      <span class="bug-number">04</span>
-      <span class="bug-title">&lt;p&gt; nested inside &lt;p&gt; <span class="badge devtools">DevTools</span></span>
-    </div>
-    <div class="bug-body">
-      <h4>What's wrong</h4>
-      <p>The Peanut card has a <code>&lt;p class="pet-card"&gt;</code> wrapping the entire card content, and then another <code>&lt;p&gt;</code> for the description text inside it. A <code>&lt;p&gt;</code> tag cannot contain another <code>&lt;p&gt;</code> — paragraphs are block elements and cannot nest. The browser will auto-close the outer <code>&lt;p&gt;</code> early, breaking the card layout.</p>
-      <h4>How to see it</h4>
-      <p>Open DevTools → Elements panel. The Peanut card will look structurally different from the other three cards. The outer <code>&lt;p&gt;</code> will have been auto-closed by the browser before the inner one opens.</p>
-      <h4>Broken code</h4>
-      <pre><span class="broken">&lt;p class="pet-card"&gt;               &lt;!-- outer p opens --&gt;
-  &lt;img src="hamster.webp"...&gt;
-  &lt;h3&gt;Peanut&lt;/h3&gt;
-  &lt;p&gt;6-month-old hamster...&lt;/p&gt;   &lt;!-- inner p — invalid! --&gt;
-  &lt;a href="#"&gt;Adopt Me&lt;/a&gt;
-&lt;/p&gt;</span></pre>
-      <h4>Fixed code</h4>
-      <pre><span class="fixed">&lt;article class="pet-card"&gt;
-  &lt;img src="hamster.webp"...&gt;
-  &lt;h3&gt;&lt;em&gt;Peanut&lt;/em&gt;&lt;/h3&gt;
-  &lt;p&gt;6-month-old hamster...&lt;/p&gt;
-  &lt;a href="#"&gt;Adopt Me&lt;/a&gt;
-&lt;/article&gt;</span></pre>
-      <div class="tool-note devtools"> DevTools → Elements panel shows the Peanut card has different DOM structure than the other three cards</div>
-    </div>
-  </div>
-
-  <!-- BUG 5 -->
   <div class="bug-card">
     <div class="bug-header">
       <span class="bug-number">05</span>
@@ -206,7 +169,7 @@
     </div>
   </div>
 
-  <!-- BUG 6 -->
+  <!-- BUG 5 -->
   <div class="bug-card">
     <div class="bug-header">
       <span class="bug-number">06</span>
@@ -233,7 +196,7 @@
     </div>
   </div>
 
-  <!-- BUG 7 -->
+  <!-- BUG 6 -->
   <div class="bug-card">
     <div class="bug-header">
       <span class="bug-number">07</span>
