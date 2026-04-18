@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Card – Flips Both Ways Perfectly</title>
+<title>My Flip Card</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+  * {
+     margin:0;
+     padding:0; 
+     box-sizing:border-box; 
+    }
 
   body {
     min-height: 100vh;
@@ -28,8 +32,7 @@
     transition: transform 1.5s ease-in-out;
     pointer-events: auto;
     cursor: pointer;
-    /* ← ADD THESE TWO LINES → */
-  -webkit-tap-highlight-color: transparent;
+   -webkit-tap-highlight-color: transparent;
   }
 
   /* Click/tap state – this one wins over hover! */
@@ -63,7 +66,7 @@
   .content {
     transform: translateZ(70px) scale(0.85);
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.3;
   }
 
   .content h2 {
