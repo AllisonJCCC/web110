@@ -1,4 +1,3 @@
-
   const card = document.querySelector('.flip-card');
 
   card.addEventListener('click', function (event) {
@@ -8,4 +7,3 @@
     // "this" also works here and refers to the card
     this.classList.toggle('flipped');
   });
-  

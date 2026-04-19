@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Your Card -Flips Both Ways Perfectly</title>
+<script src="jsForPhone.js" defer></script>
 <style>
   * { 
     margin:0; 
@@ -118,18 +119,7 @@
 
 </article>
 
-<script>
-  const card = document.querySelector('.flip-card');
 
-  card.addEventListener('click', function (event) {
-    // If the user tapped a link (or something inside a link), ignore it
-    if (event.target.closest('a')) return;
-
-    // "this" also works here and refers to the card
-    this.classList.toggle('flipped');
-  });
-  
-</script>
 
 </body>
 </html>
