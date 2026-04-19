@@ -28,10 +28,11 @@
    -webkit-tap-highlight-color: transparent; /* use with iOS phones to hide border on tapping the phone */
   }
 
-  /* article.flip-card:hover {
+  /* Remove if using on a phone - use css below for phones 
+  article.flip-card:hover {
 		transform: rotateY(180deg);
-	} */
-
+	}
+*/
    .card-side {
     position: absolute;
     inset: 0; /* This makes sure both sides of the card overlap. It says "stick the all the edges and fill the box */
@@ -74,7 +75,7 @@
   article.flip-card.flipped {
     transform: rotateY(180deg) !important;   
   }
-    /*hover: hover → “this device can actually hover”
+    /*hover: hover → “this device can actually hover so not phones”
     pointer: fine → “this device uses a mouse, not a finger”
     Together = desktop-only behavior */
 
