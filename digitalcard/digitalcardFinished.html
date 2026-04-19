@@ -117,32 +117,24 @@
  </head>
         <body>
 
-            <div class="container"><!--This is the container that holds the business card -->
-                <div class="front side"><!--This is the container that holds the front of the business card -->
-                    <div class="content"><!--This is the container that holds the info on the front of the business card -->
-                        <h1>Allison Hanna</h1> <!--This is the header on the front of the business card -->
-                        <!--Change the name above to your name-->
-                        <p>I am web developer who specializes in creating web experiences, user experience, and helping people see the power and creativity you can create with HTML and CSS.  Throughout my career, I have worked with companies of all shapes and sizes that enriched my experience
-                        </p>
-                        <!-- Add a sentence about you above-->
-                    </div> <!--closing content div-->
-                </div><!--closing front side-->
-                <div class="back side"><!--This is the container that holds the back of the business card -->
-                    <div class="content"><!--This is the container that holds the info on the back of the business card -->
-                        <h2>Contact Me</h2> <!--This is the header on the back of the business card. Make this an H1 if you want the underline under the words -->
-                      
-                        <!-- Add your info below-->
-                        <h3 class="backtext">Allison Hanna <br> 913.555.1248</h3>
-                        <a href="mailto:studentemail@jccc.edu">Email me </a><br>
+            <article class="flip-card" id="card">
 
-                        <!-- Add a download link here if you want   <a href= "FakeResume.pdf" download="FakeResume.pdf">My resume</a>-->
-                        <br>
-                        <br>
-                   
-                      </div> <!--closing content div-->
-                </div><!--closing back side-->
+            <section class="card-side front">
+                <div class="content">
+                <h2>Allison Hanna</h2>
+                <p>I am web developer who specializes in user experienced and helping people see the power and creativity you can create with HTML and CSS.</p>
+                </div>
+            </section>
 
-            </div><!--closing container-->
-    
+            <section class="card-side back">
+                <div class="content">
+                <h2>Contact Me</h2>
+                <p>Feel free to reach me anytime.</p>
+                <p> Put your website here or email address</p>
+                </div>
+            </section>
+
+            </article>
+
         </body>
 </html>

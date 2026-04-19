@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight">
 <title>My Flip Card</title>
 <link rel ="stylesheet" href="cardNature.css">
+<script src="jsForPhone.js"></script>
 </head>
 <body>
 
@@ -27,19 +28,6 @@
   </section>
 
 </article>
-
-<script>
-  const card = document.querySelector('.flip-card');
-
-  card.addEventListener('click', function (event) {
-    // If the user tapped a link (or something inside a link), ignore it
-    if (event.target.closest('a')) return;
-
-    // "this" also works here and refers to the card
-    this.classList.toggle('flipped');
-  });
-  
-</script>
 
 </body>
 </html>
