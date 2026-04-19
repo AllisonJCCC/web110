@@ -4,86 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>My Flip Card</title>
-<style>
-  * {
-     margin:0;
-     padding:0; 
-     box-sizing:border-box; 
-    }
-
-  body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #111;
-    font-family: Arial, sans-serif;
-    perspective: 1200px;
-    pointer-events: none;           /* disable clicks outside */
-  }
-
-  article.flip-card {
-    width: 90vw;
-    max-width: 700px;
-    aspect-ratio: 2 / 1;
-    border-radius: 20px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1.5s ease-in-out;
-    pointer-events: auto;
-    cursor: pointer;
-   -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Click/tap state – this one wins over hover! */
-  article.flip-card.flipped {
-    transform: rotateY(180deg) !important;   /* ← THIS IS THE FIX */
-  }
-
-  .card-side {
-    position: absolute;
-    inset: 0;
-    padding: 40px 50px;
-    color: #fff;
-    border-radius: 20px;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-  }
-
-  .front{
-    background-image: url(frontpicture.jpg);
-    background-position: center;
-    background-size: cover;
-  }
-
-  .back {
-    background-image: url(backpicture.jpg);
-    background-position: center;
-    background-size: cover;
-    transform: rotateY(180deg);
-  }
-
-  .content {
-    transform: translateZ(70px) scale(0.85);
-    text-align: center;
-    line-height: 1.3;
-  }
-
-  .content h2 {
-    margin-bottom: 20px;
-    font-size: clamp(1rem, 5vw, 3rem);
-    border-bottom: 4px solid #47b7c8;
-    padding-bottom: 10px;
-    display: inline-block;
-  }
-
-  /* Hover only on desktop AND only when NOT already flipped */
-  @media (hover: hover) and (pointer: fine) {
-    article.flip-card:hover:not(.flipped) {
-      transform: rotateY(180deg);
-    }
-  }
-</style>
+<link rel = "stylesheet" href="card.css">
 </head>
 <body>
 
@@ -100,6 +21,7 @@
     <div class="content">
       <h2>Contact Me</h2>
       <p>Feel free to reach me anytime.</p>
+      <p> Put your website here or email address</p>
     </div>
   </section>
 
