@@ -59,7 +59,7 @@
     /*translateZ(70px) pulls .content closer to you, so it looks like it’s floating above the card. Works with the perspective above*/
     transform: translateZ(70px) scale(0.85); /*This prevents it from looking too big when it comes forward, making the effect feel more natural.*/
     text-align: center;
-    line-height: 1.;
+    line-height: 1.3;
   }
 
   .content h2 {
@@ -74,7 +74,10 @@
   article.flip-card.flipped {
     transform: rotateY(180deg) !important;   
   }
-      /* Hover only on desktop AND only when NOT already flipped */
+    /*hover: hover → “this device can actually hover”
+    pointer: fine → “this device uses a mouse, not a finger”
+    Together = desktop-only behavior */
+
   @media (hover: hover) and (pointer: fine) {
     article.flip-card:hover:not(.flipped) {
       transform: rotateY(180deg);
