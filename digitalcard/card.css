@@ -53,8 +53,11 @@
   .front {
     background-size: 100vh; /* Shows more of the image so you fill the space*/
     background-image: url(frontpicture.jpg);
-    /*Might need to add background position, background size here*/
-}
+    background-position: center;
+    background-size: cover;
+    }
+  /*Might need to add background position, background size here*/
+
   .back {
     background-color: #333;
     transform: rotateY(180deg); /* This keeps the image on the back of the card.  Remove it to see the difference.*/
