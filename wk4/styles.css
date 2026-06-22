@@ -1,52 +1,65 @@
 
-/*Allison Hanna 2/12/25  Ch.4 assignment css */
-
-/* Basic color and font settings */
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #d7c7aa;
-  color: #926f4f;
-  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #90E4C1;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-/*Element styles*/
-h1 {
-  background-color: #00602b; /* Green for Italian vibe */
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  font-style: italic;
-  color: #fff;
-}
 
-footer {
-  text-align: center;
+/* HEADER */
+header {
+  background-color: #c74a2b;
   color: white;
-  background-color: #bb161d;
+  text-align: center;
+  padding: 20px;
 }
 
-p {
-  color: #230e06;
-  background-color: #fff;
+h1 {
+  margin: 0;
 }
 
-/* CSS for Multiple Styles */
-h2,h3 {
-  color: #342517;
-}
-
-/* Highlighting text with span */
-.highlight {
+/* NAV */
+nav {
   font-weight: bold;
-  color: #ee1e28;
-  font-style: italic;
+  border-bottom: 2px solid #000033;
 }
 
-/* Styling for the specials page */
-.special-item {
-  background: #fff;
+nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+
+nav li {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+nav a {
+  text-decoration: none;
+  color: #c74a2b;
+}
+
+nav a:hover {
+  color: #58410e;
+}
+
+/* MAIN CONTENT */
+main {
+  padding: 10px;
 }
 
 
+
+/* FOOTER */
+footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
 
 
