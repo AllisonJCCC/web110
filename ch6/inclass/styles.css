@@ -1,103 +1,80 @@
-/* General Body Styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f0f7f4;
-    margin: 0;
-    padding: 0;
-    font-size: 16px; /* Base font size set to 16px, which equals 1rem */
+/* Allison Hanna Vacation CSS 10-05-26*/
+
+*{ /*The * means change everything */
+    box-sizing: border-box;
 }
 
-/* Header Styles */
-header {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 16%, rgba(15,88,16,1) 54%, rgba(110,205,209,1) 100%);
-    color: white;
-    text-align: center;
-    padding: 3rem 2rem; /* Padding is now in rem */
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+   /* background-image: url(sloth.webp); background image 
+      background-repeat:repeat; Also, repeat-x or repeat-y */
+     background: #2A7B9B;
+     background: linear-gradient(48deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); /* this is for gradients. cssgradient.io website*/
+
+    font-size:1em; /* 16pt= 1em */
+    }
+.wrapper{
+   width:90%;
+   margin: auto;
+   border: 3px solid black;
+}
+
+header{
+    background-color: #2A7B9B;
+    color:#000;
+    text-align:center;
+    padding: 3rem 2rem 3rem 2rem; /* Padding is now in rem  top right bottom left */
     margin-bottom: 1rem; /* Margin in rem */
-    border-bottom: 0.5rem solid #1e4532; /* Border size in rem */
+    border-bottom: 4pt solid #1e4532; /* Border size in rem */
+}
+main{
+    max-width: 90%;
+    margin:0 auto;
+    padding:20px;
+    }
+section{
+    background-color: #faebd7;
+    margin-bottom:20px;
+    padding:20px;
+    border:4px solid #222222;
+    box-shadow:2px 3px #625d5d;
+}
+section h2{
+  background-color: #ffffff;  
+  margin-bottom:4px;
+  padding:1rem;
+  text-shadow: 2px 3px green;
+  border:3px dotted #378d31;
+}
+p{
+    color:#07124a;
+    line-height: 1.5;
+    margin-bottom:5px;
 }
 
-header h1 {
-    font-size: 3.5rem; /* Font size for heading */
+img{ /* all images */
+    width:70%;
+    height:70%;
+    border-radius:20px;
+    box-shadow: 4px 5px grey;
+    opacity:.5; /* 0 = see through 1= solid */
+    border: 3px solid #000;
+
 }
 
-
-/* Navigation Styles */
-nav {
-    background-color: #1a1561;
-    margin: 0 2rem 2rem 2rem; /* Margin in rem */
-    padding: 1.5rem; /* Padding in rem */
-    border: 0.2rem solid #052033; /* Border in rem */
+.smallPicture{ /* you choose the images */
+    width:40%;
+    height:40%;
 }
 
-nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem; /* Gap between items in rem */
-}
+/* Make a class with a dot (.) or you can the element footer{  
+Change 3 things with your footer, color (bkg or font), border, font-size, text-shadow, text-align, padding, margin */
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem; /* Font size for links */
-    padding: 1rem 2rem; /* Padding in rem */
-}
-
-nav a:hover {
-    color: #d9e8d8;
-    text-decoration: underline;
-}
-
-/* Main Content Styles */
-main {
-    max-width: 90%; /* Responsive width */
-    margin: 0 auto;
-    padding: 2rem; /* Padding in rem */
-}
-
-section {
-    background-color: white;
-    margin-bottom: 2rem; /* Margin in rem */
-    padding: 2.5rem; /* Padding in rem */
-    border: 0.2rem solid #378d31; /* Border in rem */
-}
-
-h2 {
-    color: #2a6041;
-    margin-bottom: 1rem; /* Margin in rem */
-    font-size: 2.5rem; /* Font size in rem */
-}
-
-p {
-    color: #333;
-    font-size: 1rem; /* Font size in rem */
-    line-height: 1.6;
-    margin-bottom: 1.5rem; /* Margin in rem */
-}
-
-/* Image Styling */
-img {
-    max-width: 100%;
-    height: auto;
-    margin: 1rem 0; /* Margin in rem */
-    border: 0.2rem solid #4a8e67; /* Border in rem */
-    padding: 0.3rem; /* Padding in rem */
-    border-radius:20%;
-}
-
-/* Footer Styles */
-footer {
+footer{
     background-color: #2a6041;
-     text-align: center;
+    text-align: center;
+    color:#fff;
     padding: 2rem 2rem; /* Padding in rem */
     margin-top: 2rem; /* Margin in rem */
-    border-top: 0.5rem solid #1e4532; /* Border in rem */
+    border-top: 0.5rem solid #1e4532; /* Border in rem */  
 }
-
-footer p{
-    color:antiquewhite;
-}
-
