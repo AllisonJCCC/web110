@@ -99,11 +99,11 @@ body {
 
 
 .mountains {
-    background-image: url("mountains.webp");
+    background-image: url("mountains.webp");/* The name of your image here */
 }
 
 .ocean {
-    background-image: url("oceans.jpg");
+    background-image: url("oceans.jpg"); /* The name of your image here */
 }
 
 
@@ -116,5 +116,31 @@ body {
 
 .footer p {
     margin: 0;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 1.6rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .heroContent {
+    padding: 15px;
+  }
+
+  .parallax {
+    background-attachment: scroll;
+  }
 }
 
