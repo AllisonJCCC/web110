@@ -49,14 +49,14 @@
     padding: 20px 30px;
     color:#fff;                    /* Add a font color */
     border-radius:20px;                    /* Add a border radius */
-    backface-visibility:hidden;    /* Hide the back of the card (ex:hidden)  Demo:https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility */
+    backface-visibility:hidden;    /* Hide the back of the card Demo:https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility */
     transform-style: preserve-3d;  /* https://www.w3schools.com/cssref/trycss3_transform-style_inuse.htm  This just preserves the 3D effect */
     }
 
   .front {
     background-size: 100vh; /* Shows more of the image so you fill the space*/
     background-image: url(frontpurple.webp); /* Add your front image here */
-    /*Might need to add background position, background size here*/
+
 }
   .back {
     background-color: #333;
@@ -65,6 +65,7 @@
     background-image: url(backnature.webp); /* Add your back picture here */
     background-position:center;  /*Centers the picture in the box */
     background-size:cover;   /*Fill the box with the picture */
+  
     }
 
   .content {
