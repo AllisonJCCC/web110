@@ -1,20 +1,19 @@
+/* Allison Hanna Card CSS for my digital card */
 
-/* Allison Hanna 04/19/2026  Digital Mobile/Desktop Card */
-
-* { 
+  * { 
     margin:0; 
     padding:0; 
     box-sizing:border-box;
  }
 
   body {
-    min-height: 100vh;  /*  This will fill the browser's height.  Remove the justify-content and align-items css to see the full height. */
+    min-height:100vh;      /*  This will fill the browser's height.  Remove the justify-content and align-items css to see the full height. */
     display: flex;    /* This will organize the information well with flex */
     justify-content: center;  /* This will center the info L and R */
     align-items: center;      /* This will center the info Top and Bottom */
-    background: #111;
+    background-color:#111;
     font-family: Arial, sans-serif;
-    perspective: 1200px;     /* https://www.w3schools.com/cssref/css3_pr_perspective.php   The lower the #, the more 3d effect.  It changes the child of body, not body itself. */
+    perspective:1200px;         /* https://www.w3schools.com/cssref/css3_pr_perspective.php   The lower the #, the more 3d effect.  It changes the child of body, not body itself. */
    
   }
 
@@ -23,14 +22,18 @@
     width: 90vw;             /* This controls the height*/
     max-width: 800px;    /* This controls the width*/
     aspect-ratio: 2 / 1;    /* This controls the height and width on a phone - landscape or portrait*/
-    border-radius: 20px;
+    border-radius:  20px; 
     position: relative;       /* This controls the positon of the container in some browsers*/
-    transform-style: preserve-3d;  /* https://www.w3schools.com/cssref/trycss3_transform-style_inuse.htm  This just preserves the 3D effect */
+    transform-style: preserve-3d;     /* https://www.w3schools.com/cssref/trycss3_transform-style_inuse.htm  This just preserves the 3D effect */
     transition: transform 1.5s ease-in-out;  /* https://www.w3schools.com/css/css3_transitions.asp   This determines how long and what kind of transition */
     pointer-events: auto;  /* allow clicks and hovers on desktops and phones */
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent; /* remove link borders--dotted edges on an iOS device */
   }
+    /* hover to flip the card to the back. Uncomment this is you are not using JS. If you are using JS keep this hidden. 
+    Only one can be used-- the JS file or this CSS  */
+   /* article.flip-card:hover {  
+    transform: rotateY(180deg); 
+}   */
 
   /* When the card is flpped, flip back to the front*/
   article.flip-card.flipped {
@@ -39,32 +42,29 @@
 
   .card-side {
     display:flex;  /* responsive sizing*/
-    justify-content: center; /* center the content  L and R*/
-    align-items: center;  /* center the content top and bottom */
+    justify-content:center;  /* center the content  L and R*/
+    align-items:center;  /* center the content top and bottom */
     position: absolute;  /* needed for flip card sides to stack on top of each other */
     inset: 0;  /* stick to the edges and fill the box works with backface visiblity */
     padding: 20px 30px;
-    color: #fff;
-    border-radius: 20px;
-    backface-visibility: hidden;     /* Hide the back of the card   Demo:https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility */
+    color:#fff;                    /* Add a font color */
+    border-radius:20px;                    /* Add a border radius */
+    backface-visibility:hidden;    /* Hide the back of the card (ex:hidden)  Demo:https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility */
     transform-style: preserve-3d;  /* https://www.w3schools.com/cssref/trycss3_transform-style_inuse.htm  This just preserves the 3D effect */
     }
 
   .front {
     background-size: 100vh; /* Shows more of the image so you fill the space*/
-    background-image: url(frontpicture.jpg);
-    background-position: center;
-    background-size: cover;
-    }
-  /*Might need to add background position, background size here*/
-
+    background-image: url(frontpurple.webp); /* Add your front image here */
+    /*Might need to add background position, background size here*/
+}
   .back {
     background-color: #333;
     transform: rotateY(180deg); /* This keeps the image on the back of the card.  Remove it to see the difference.*/
     padding-top: 10px;
-    background-image: url(backpicture.jpg);
-    background-position: center;
-    background-size: cover;
+    background-image: url(backnature.webp); /* Add your back picture here */
+    background-position:center;  /*Centers the picture in the box */
+    background-size:cover;   /*Fill the box with the picture */
     }
 
   .content {
@@ -76,23 +76,24 @@
   .content h2 {
     margin-bottom: 20px;
     font-size: 2rem;
-    border-bottom: 4px solid #15358f;
+    border-bottom:3px dotted #197167;  /* Add a border */
     padding-bottom: 10px;
     display: inline-block;
   }
 
   .content p{
-    font-size:1rem;
+   font-size: 1em; /*Add a font size */
   }
 
+  /* The email me button */
   .back a {
     display: inline-block;
     margin-top: 30px;
     padding: 14px 34px;
-    border: 2.5px solid #15389f;
-    border-radius: 50px;
-    color: #56b4c9;
-    background: black;
+    border:2px solid #000;   /* Add a border */
+    border-radius:20px; /* Add a border radius */
+    color: #000;/* Add a font color */
+    background-color:#197167; /* Add a background color for your button -- use transparent if you want the button see through;*/
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
@@ -100,5 +101,9 @@
   }
 
   .back a:hover { 
-    background:#ca9c66; 
-    color:#000; }
+    background-color:#000;
+    color:#197167;
+  /* Add a background color and text color*/
+   }
+
+  
